@@ -4,16 +4,16 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="text-dark text-center">
-                        <strong>PHP Tutorial</strong>
+                        <strong>HTML Tutorial</strong>
                     </div>
                     <a class="nav-link text-secondary active" href="index.php">
-                        PHP <i class="ms-1 fas fa-home"></i>
+                        HTML <i class="ms-1 fas fa-home"></i>
                     </a>
                     <a class="nav-link text-secondary active" href="1.php">
-                        PHP Intro
+                        HTML Intro
                     </a>
                     <a class="nav-link text-secondary active" href="2.php">
-                        PHP Dasar
+                        HTML Dasar
                     </a>
                 </div>
             </div>
