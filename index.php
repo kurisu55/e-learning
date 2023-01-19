@@ -22,7 +22,7 @@
     <nav class="navbar navbar-light bg-light static-top">
         <div class="container">
             <a class="navbar-brand" href="#!">Start Bootstrap</a>
-            <a class="btn btn-primary" href="#signup">Sign Up</a>
+            <a class="btn btn-primary btn-sm" href="#signup">Sign Up</a>
         </div>
     </nav>
     <!-- Masthead-->
@@ -32,7 +32,7 @@
                 <div class="col-lg-6">
                     <div class="text-center text-white">
                         <!-- Page heading-->
-                        <h1 class="mb-5">Generate more leads with a professional landing page!</h1>
+                        <h1 class="mb-5">Belajar Code</h1>
                         <!-- Signup form-->
                         <!-- * * * * * * * * * * * * * * *-->
                         <!-- * * SB Forms Contact Form * *-->
@@ -45,11 +45,9 @@
                             <!-- Email address input-->
                             <div class="row">
                                 <div class="col">
-                                    <input class="form-control form-control-lg" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
-                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:required">Email Address is required.</div>
-                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                                    <input class="form-control form-control-lg" id="" type="search" placeholder="Ketik pencarian disini!" />
                                 </div>
-                                <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
+                                <div class="col-auto"><button class="btn btn-primary btn-lg" type="submit">Submit</button></div>
                             </div>
                             <!-- Submit success message-->
                             <!---->

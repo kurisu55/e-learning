@@ -13,7 +13,7 @@
 </head>
 
 <body class="bg-primary">
-    <div class="text-center">
+    <div class="container text-center">
         <div class="row justify-content-md-center">
             <div class="col align-self-start">
                 <div class="col col-md">
@@ -24,7 +24,7 @@
                 <div id="layoutAuthentication">
                     <div id="layoutAuthentication_content">
                         <main>
-                            <div class="">
+                            <div class="container">
                                 <div class="col col-md">
                                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                                         <div class="card-header">
