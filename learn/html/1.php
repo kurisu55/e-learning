@@ -1,5 +1,5 @@
+<!-- SCRIPT PHP AWAL -->
 <?php
-//SCRIPT PHP AWAL
 // Variabel Template
 $title = 'PHP Intro';
 
@@ -27,8 +27,8 @@ require 'template/sidebar.php';
     </main>
 
 
+    <!-- SCRIPT PHP AKHIR -->
     <?php
-    // SCRIPT PHP AKHIR
     require 'template/footer.php';
 
     ?>

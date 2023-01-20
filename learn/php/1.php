@@ -1,7 +1,7 @@
+<!-- SCRIPT PHP AWAL -->
 <?php
-//SCRIPT PHP AWAL
-// Variabel Template
-$title = 'PHP Intro';
+// Variabel Twmplate
+$title = 'PHP HOME';
 
 // Pemanggilan File Template
 require 'template/head.php';
@@ -11,7 +11,7 @@ require 'template/sidebar.php';
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4"><?= $title ?></h1>
+            <h1 class="mt-4"><?= $title; ?></h1>
             <div class="card mb-4">
                 <div class="card-body">
                     This page is an example of using the light side navigation option. By appending the
@@ -27,8 +27,8 @@ require 'template/sidebar.php';
     </main>
 
 
+    <!-- SCRIPT PHP AKHIR -->
     <?php
-    // SCRIPT PHP AKHIR
     require 'template/footer.php';
 
     ?>
