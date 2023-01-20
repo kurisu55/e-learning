@@ -21,8 +21,19 @@
     <!-- Navigation-->
     <nav class="navbar navbar-light bg-light static-top">
         <div class="container">
-            <a class="navbar-brand" href="#!">Start Bootstrap</a>
-            <a class="btn btn-primary" href="#signup">Sign Up</a>
+            <a class="navbar-brand col-9" href="#!">Start Bootstrap</a>
+            <!-- Example single danger button -->
+            <div class="btn-group ms-4">
+                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Tutorial
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="learn/html">HTML</a></li>
+                    <li><a class="dropdown-item" href="learn/php">PHP</a></li>
+                    <li><a class="dropdown-item" href="learn/js">Javascript</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-primary" href="authentication/login/user/index.php">Login</a>
         </div>
     </nav>
     <!-- Masthead-->
@@ -33,14 +44,6 @@
                     <div class="text-center text-white">
                         <!-- Page heading-->
                         <h1 class="mb-5">Belajar Code</h1>
-                        <!-- Signup form-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
                         <form class="form-subscribe" id="contactForm">
                             <!-- Email address input-->
                             <div class="row">
@@ -123,20 +126,7 @@
                         <li class="list-inline-item">⋅</li>
                         <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
                     </ul>
-                    <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2022. All Rights Reserved.</p>
-                </div>
-                <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item me-4">
-                            <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                        </li>
-                        <li class="list-inline-item me-4">
-                            <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                        </li>
-                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2023. All Rights Reserved.</p>
                 </div>
             </div>
         </div>

@@ -26,12 +26,12 @@
                                 <div class="card-body">
                                     <form>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                            <label for="inputEmail">Email address</label>
+                                            <input class="form-control" id="username" type="text" placeholder="Username" />
+                                            <label for="inputEmail">Username</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
-                                            <label for="inputPassword">Password</label>
+                                            <input class="form-control" id="password" type="password" placeholder="Password" />
+                                            <label for="password">Password</label>
                                         </div>
                                         <div class="d-flex align-items-center mt-4 mb-0">
                                             <button type="submit" class="btn btn-primary col col-lg">Login</button>
