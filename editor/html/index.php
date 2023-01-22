@@ -19,17 +19,20 @@ $author = '';
     <link href="../../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
-    <!-- Code Mirror -->
+    <!-- CodeMirror CSS -->
     <link rel="stylesheet" href="../../assets/codemirror/lib/codemirror.css">
 
-    <!-- Theme Code Mirror-->
+    <!-- Addons CodeMirror -->
+    <link rel="stylesheet" href="../../assets/codemirror/addon/display/fullscreen.css">
+
+    <!-- Theme CodeMirror-->
     <link rel="stylesheet" href="../../assets/codemirror/theme/dracula.css">
     <link rel="stylesheet" href="../../assets/codemirror/theme/base16-light.css">
 
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/sidebar/assets/favicon.ico" />
 
-    <!-- Code Mirror JS -->
+    <!-- CodeMirror JS -->
     <script src="../../assets/codemirror/lib/codemirror.js"></script>
 
     <!-- Mode Editor -->
@@ -38,11 +41,16 @@ $author = '';
     <script src="../../assets/codemirror/mode/css/css.js"></script>
     <script src="../../assets/codemirror/mode/htmlmixed/htmlmixed.js"></script>
 
-    <!-- Addons Code Mirror -->
+    <!-- Addons CodeMirror JS -->
     <script src="../../assets/codemirror/addon/edit/closetag.js"></script>
     <script src="../../assets/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="../../assets/codemirror/addon/display/fullscreen.js"></script>
 
     <style>
+        body {
+            background-color: #90c7fa;
+        }
+
         iframe {
             width: 100%;
             float: left;
@@ -52,34 +60,27 @@ $author = '';
     </style>
 </head>
 
-<body class="">
-    <div class="container" style="margin-top: 50px;">
-        <div class="row mb-3">
+<body>
+    <div class="" style="margin-top: 50px;">
+        <div class="row mb-3 container">
             <div style="width: 60px;">
                 <button type="button" class="btn btn-primary" id="runCode" onclick="buttonRun()">Run</button>
             </div>
             <div style="width: 60px;">
                 <a class="btn btn-outline-secondary" data-toggle="tooltip" title="Orientation"><i class="fa-solid fa-rotate"></i></a>
             </div>
-            <div style="width: 60px;">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Theme
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">HTML</a></li>
-                        <li><a class="dropdown-item" href="#">PHP</a></li>
-                        <li><a class="dropdown-item" href="#">Javascript</a></li>
-                    </ul>
-                </div>
-            </div>
+            <select id="select" class="form-select" onchange="selectTheme()" style="width: 120px;">
+                <option selected>default</option>
+                <option>dracula</option>
+                <option>base16-light</option>
+            </select>
         </div>
-        <div class=" row">
+        <div class="row" style="margin-left: 10px;margin-right: 10px;;">
             <div class="col-md-6">
                 <textarea id="code" name="code" class="CodeMirror"></textarea>
             </div>
-            <div class="col-md-6 border">
-                <iframe id="preview" style="overflow: hidden;"></iframe>
+            <div class="col-md-6">
+                <iframe id="preview" style="background-color: #ffffff;"></iframe>
             </div>
         </div>
     </div>
@@ -103,13 +104,20 @@ $author = '';
         // Initialize CodeMirror editor with a nice html5 canvas demo.
         var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
             mode: 'text/html',
-            lineNumbers: true
+            lineNumbers: true,
+            matchBrackets: true,
+            autoCloseTags: true,
+            extraKeys: {
+                "F11": function(cm) {
+                    cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+                },
+                "Esc": function(cm) {
+                    if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+                }
+            }
         });
-        // editor.on("change", function() {
-        //     clearTimeout(delay);
-        //     delay = setTimeout(updatePreview, 300);
-        // });
 
+        // Button Run Code to preview iframe
         function buttonRun() {
             var previewFrame = document.getElementById('preview');
             var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
@@ -117,8 +125,30 @@ $author = '';
             preview.write(editor.getValue());
             preview.close();
         }
-        // setTimeout(updatePreview, 300);
         buttonRun();
+
+        // Select Theme
+        var input = document.getElementById("select");
+
+        function selectTheme() {
+            var theme = input.options[input.selectedIndex].textContent;
+            editor.setOption("theme", theme);
+            location.hash = "#" + theme;
+        }
+        var choice = (location.hash && location.hash.slice(1)) ||
+            (document.location.search &&
+                decodeURIComponent(document.location.search.slice(1)));
+        if (choice) {
+            input.value = choice;
+            editor.setOption("theme", choice);
+        }
+        CodeMirror.on(window, "hashchange", function() {
+            var theme = location.hash.slice(1);
+            if (theme) {
+                input.value = theme;
+                selectTheme();
+            }
+        });
     </script>
 </body>
 
