@@ -1,6 +1,6 @@
 <!-- SCRIPT PHP AWAL -->
 <?php
-// Variabel Twmplate
+// Variabel Template
 $title = 'PHP HOME';
 
 // Pemanggilan File Template
