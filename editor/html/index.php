@@ -53,17 +53,17 @@ $author = '';
 </head>
 
 <body class="">
-    <div class="container" style="margin-top: 100px;">
+    <div class="container" style="margin-top: 50px;">
         <div class="row mb-3">
-            <span class="col-1">
+            <div style="width: 60px;">
                 <button type="button" class="btn btn-primary" id="runCode" onclick="buttonRun()">Run</button>
-            </span>
-            <span class="col-1">
+            </div>
+            <div style="width: 60px;">
                 <a class="btn btn-outline-secondary" data-toggle="tooltip" title="Orientation"><i class="fa-solid fa-rotate"></i></a>
-            </span>
-            <span class="col-1">
+            </div>
+            <div style="width: 60px;">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Theme
                     </button>
                     <ul class="dropdown-menu">
@@ -72,7 +72,7 @@ $author = '';
                         <li><a class="dropdown-item" href="#">Javascript</a></li>
                     </ul>
                 </div>
-            </span>
+            </div>
         </div>
         <div class=" row">
             <div class="col-md-6">
