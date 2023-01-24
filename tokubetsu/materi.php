@@ -14,13 +14,23 @@ require 'template/sidebar.php';
             <h1 class="mt-4"><?= $title; ?></h1>
             <div class="card mb-4">
                 <div class="card-body">
-                    This page is an example of using the light side navigation option. By appending the
-                    <code>.sb-sidenav-light</code>
-                    class to the
-                    <code>.sb-sidenav</code>
-                    class, the side navigation will take on a light color scheme. The
-                    <code>.sb-sidenav-dark</code>
-                    is also available for a darker option.
+                    <div class="col-4 mb-3">
+                        <label for="mode" class="form-label">Mode Bahasa</label>
+                        <input class="form-control" list="datalistOptions" id="mode" placeholder="Bahasa...">
+                        <datalist id="datalistOptions">
+                            <option value="HTML">
+                            <option value="PHP">
+                            <option value="Javascript">
+                        </datalist>
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label for="judul" class="form-label">Judul Materi</label>
+                        <input type="text" class="form-control" id="judul" placeholder="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="materi" class="form-label">Isi Materi</label>
+                        <textarea class="form-control" id="materi" rows="3" style="height: 175px;"></textarea>
+                    </div>
                 </div>
             </div>
         </div>
