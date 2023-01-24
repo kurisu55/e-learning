@@ -29,14 +29,14 @@
 
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <input type="email" id="email" class="form-control form-control-lg" placeholder="Enter a valid email address" />
-                            <label class="form-label" for="email">Email address</label>
+                            <label for="username" class="visually-hidden">Password</label>
+                            <input type="password" class="form-control" id="username" placeholder="Username atau Email">
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-3">
-                            <input type="password" id="password" class="form-control form-control-lg" placeholder="Enter password" />
-                            <label class="form-label" for="password">Password</label>
+                            <label for="password" class="visually-hidden">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center">

@@ -78,21 +78,21 @@
                                 <!-- 2 column grid layout with text inputs for the first and last names -->
                                 <div class="row">
                                     <div class="form-outline mb-4">
-                                        <input type="text" id="fullName" class="form-control" />
-                                        <label class="form-label" for="fullName">Full Name</label>
+                                        <label for="name" class="visually-hidden">Nama </label>
+                                        <input type="text" class="form-control" id="name" placeholder="Nama">
                                     </div>
                                 </div>
 
                                 <!-- Email input -->
                                 <div class="form-outline mb-4">
-                                    <input type="email" id="email" class="form-control" />
-                                    <label class="form-label" for="email">Email address</label>
+                                    <label for="email" class="visually-hidden">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email">
                                 </div>
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="password" class="form-control" />
-                                    <label class="form-label" for="password">Password</label>
+                                    <label for="password" class="visually-hidden">Password</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Password">
                                 </div>
                                 <p class="small"><a href="../login/user/index.php" class="link-success">Login</a> jika sudah punya akun!</p>
                                 <!-- Submit button -->
