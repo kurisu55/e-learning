@@ -14,27 +14,6 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 // echo "Koneksi berhasil";
 // mysqli_close($conn);
 
-function login_admin()
-{
-    global $conn;
-
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // menyeleksi data pada tabel admin dengan username dan password yang sesuai
-    $data = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username' and password='$password'");
-
-    // menghitung jumlah data yang ditemukan
-    $cek = mysqli_num_rows($data);
-    if ($cek > 0) {
-        $_SESSION['username'] = $username;
-        $_SESSION['status'] = "login";
-        header("location:../../../tokubetsu/dashboard.php");
-    } else {
-        $_SESSION['status'] = "gagal";
-        header("location:index.php?pesan=gagal");
-    }
-}
 
 // Registrasi User
 function registrasi($data)
