@@ -33,7 +33,7 @@
                     <li><a class="dropdown-item" href="learn/js">Javascript</a></li>
                 </ul>
             </div>
-            <a class="btn btn-primary" href="authentication/login/user/index.php">Login</a>
+            <a class="btn btn-primary" href="authentication/login/index.php">Login</a>
         </div>
     </nav>
     <!-- Masthead-->
