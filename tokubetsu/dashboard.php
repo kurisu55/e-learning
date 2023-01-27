@@ -1,5 +1,11 @@
 <!-- SCRIPT PHP AWAL -->
 <?php
+// Session
+session_start();
+if (!isset($_SESSION["level"])) {
+    header("location:../error/401.php");
+}
+
 // Variabel Twmplate
 $title = 'Dashboard';
 
