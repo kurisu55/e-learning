@@ -2,8 +2,8 @@
 <?php
 // Variabel TAG Template
 $title = 'Code Editor HTML';
-$description = '';
-$author = '';
+$description = 'code editor, code editor html, belajar html';
+$author = 'Kristovel Adi S.';
 ?>
 
 <!DOCTYPE html>
@@ -13,10 +13,14 @@ $author = '';
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="<?= $description ?>" />
+    <meta name="author" content="<?= $author; ?>" />
     <title><?= $title; ?></title>
     <link href="../../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
     <!-- CodeMirror CSS -->
@@ -35,68 +39,68 @@ $author = '';
     <!-- CodeMirror JS -->
     <script src="../../assets/codemirror/lib/codemirror.js"></script>
 
-    <!-- Mode Editor -->
-    <script src="../../assets/codemirror/mode/xml/xml.js"></script>
-    <script src="../../assets/codemirror/mode/javascript/javascript.js"></script>
-    <script src="../../assets/codemirror/mode/css/css.js"></script>
-    <script src="../../assets/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-
     <!-- Addons CodeMirror JS -->
     <script src="../../assets/codemirror/addon/edit/closetag.js"></script>
     <script src="../../assets/codemirror/addon/edit/matchbrackets.js"></script>
     <script src="../../assets/codemirror/addon/display/fullscreen.js"></script>
 
-    <style>
-        body {
-            background-color: #90c7fa;
-        }
+    <!-- Mode Editor -->
+    <script src="../../assets/codemirror/mode/xml/xml.js"></script>
+    <script src="../../assets/codemirror/mode/javascript/javascript.js"></script>
+    <script src="../../assets/codemirror/mode/css/css.js"></script>
+    <script src="../../assets/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="../../assets/codemirror/mode/clike/clike.js"></script>
+    <script src="../../assets/codemirror/mode/php/php.js"></script>
 
+    <style>
         iframe {
             width: 100%;
-            float: left;
             height: 300px;
-            border: 1px solid black;
+            border: 2px solid black;
         }
     </style>
 </head>
 
 <body>
-    <div class="" style="margin-top: 50px;">
-        <div class="row mb-3 container">
-            <div style="width: 60px;">
-                <button type="button" class="btn btn-primary" id="runCode" onclick="buttonRun()">Run</button>
-            </div>
-            <div style="width: 60px;">
-                <a class="btn btn-outline-secondary" data-toggle="tooltip" title="Orientation"><i class="fa-solid fa-rotate"></i></a>
-            </div>
-            <select id="select" class="form-select" onchange="selectTheme()" style="width: 120px;">
-                <option selected>default</option>
-                <option>dracula</option>
-                <option>base16-light</option>
-            </select>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Bootstrap
+            </a>
         </div>
-        <div class="row" style="margin-left: 10px;margin-right: 10px;;">
-            <div class="col-md-6">
-                <textarea id="code" name="code" class="CodeMirror"></textarea>
-            </div>
-            <div class="col-md-6">
-                <iframe id="preview" style="background-color: #ffffff;"></iframe>
-            </div>
+    </nav>
+    <div class="mx-2 mt-2 border-3 border-bottom" style="background-color: #eeeeee;">
+        <!-- Kumpulan tombol -->
+        <ul class="nav mb-1 p-2 border">
+            <li class="nav-item me-3">
+                <button class="btn btn-success" id="run" onclick="buttonRun()" title="Run Code"><i class="fas fa-solid fa-caret-right me-1"></i> Run</button>
+            </li>
+            <li class="nav-item me-3">
+                <select id="select" class="form-select" onchange="selectTheme()" style="width: 120px;" title="Theme">
+                    <option selected>default</option>
+                    <option>dracula</option>
+                    <option>base16-light</option>
+                </select>
+            </li>
+            <li class="nav-item">
+                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" title="Key Info" data-bs-trigger="hover focus" data-bs-content="Key F11 : Fullscreen">
+                    <button class="btn btn-primary" type="button" disabled>Key</button>
+                </span>
+            </li>
+        </ul>
+        <div class="mx-2">
+            <textarea id="code"></textarea>
+            <div class="my-2"></div>
+            <iframe id="preview" style="background-color: white;"></iframe>
         </div>
     </div>
 
     <!-- Library Javascript -->
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core theme JS-->
-    <script src="assets/css/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
-
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-
+    <!-- SB Admin JS -->
+    <script src="../../assets/startbootstrap-sb-admin-gh-pages/js/scripts.js"></script>
     <!-- Main JS -->
-    <script src="assets/main.js"></script>
+    <script src="../../assets/main.js"></script>
 
     <!-- Javascript Code -->
     <script>
@@ -149,6 +153,12 @@ $author = '';
                 selectTheme();
             }
         });
+
+        // Popover
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
     </script>
 </body>
 
