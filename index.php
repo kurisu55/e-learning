@@ -1,3 +1,8 @@
+<?php
+// Session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +20,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="assets/startbootstrap-landing-page-gh-pages/css/styles.css" rel="stylesheet" />
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="assets/fontawesome-free-6.1.1-web/css/all.min.css">
 </head>
 
 <body>
@@ -33,7 +40,17 @@
                     <li><a class="dropdown-item" href="learn/js">Javascript</a></li>
                 </ul>
             </div>
-            <a class="btn btn-primary" href="authentication/login/index.php">Login</a>
+            <?php if (isset($_SESSION["level"])) {
+                echo  "<a class='nav-link dropdown-toggle' id='navbarDropdown' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'><i class='fas fa-user fa-fw'></i></a>";
+                echo  "<ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>";
+                echo "<p class='dropdown-item'>" . $_SESSION["name"] . "</p>";
+                echo "<hr class='dropdown-divider'>";
+                echo "<li><a class='dropdown-item' href='authentication/login/logout.php'>Logout</a></li>";
+                echo "</ul>";
+            } else {
+                echo  "<a class='btn btn-primary' href='authentication/login/index.php'>Login</a>";
+            }
+            ?>
         </div>
     </nav>
     <!-- Masthead-->
