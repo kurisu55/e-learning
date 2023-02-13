@@ -2,6 +2,11 @@
 // Session
 session_start();
 
+// Mengalihkan halaman login ketika sudah login
+if (isset($_SESSION["level"]) == 2) {
+    header("location:../../index.php");
+}
+
 // Pemanggilan conn_db
 require '../db/conn_db.php';
 
@@ -10,6 +15,10 @@ if (isset($_POST["login"])) {
     // Ambil data saat input
     $username = $_POST["username"];
     $password = $_POST["password"];
+
+    if (empty($username || $password)) {
+        header("location:index.php?required");
+    }
 
     // Menampilkan data berdasarkan username
     $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username'");
@@ -55,15 +64,24 @@ if (isset($_POST["login"])) {
     <title>Login</title>
     <link href="../../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
     <link href="../../assets/style.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="../../assets/img/terminal-solid.svg">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <nav class="navbar bg-body-tertiary bg-white fixed-top border">
+        <div class="container-fluid">
+            <a class="navbar-brand btn btn-outline-dark" href="../../index.php">
+                <img src="../../assets/img/terminal-solid.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Code
+            </a>
+        </div>
+    </nav>
     <section class="vh-100">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-9 col-lg-6 col-xl-5">
-                    <img src="../../assets/img/vecteezy_programer-learning-programming-languages-by-computer-laptop_.jpg" class="img-fluid" alt="Sample image">
+                    <img src="../../assets/img/vecteezy_programer-learning-programming-languages-by-computer-laptop_.jpg" class="img img-fluid" alt="Sample image">
                     <div class="small"><a href="https://www.vecteezy.com/free-vector/programming" class="link-dark">Programming Vectors by Vecteezy</a></div>
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -73,6 +91,16 @@ if (isset($_POST["login"])) {
                     <?php if (isset($error)) : ?>
                         <p class="alert alert-danger" role="alert">Username atau password salah!</p>
                     <?php endif ?>
+                    <?php if (isset($_GET["required"])) { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Lengkapi</strong> semua form!
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($_GET["registered"])) { ?>
+                        <div class="alert alert-success" role="alert">
+                            <strong>Terdaftar.</strong> Silahkan login akun Anda!
+                        </div>
+                    <?php }; ?>
                     <form action="" method="post">
                         <!-- Email input -->
                         <div class="form-outline mb-4">
@@ -97,14 +125,6 @@ if (isset($_POST["login"])) {
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-            <!-- Copyright -->
-            <div class="text-white mb-3 mb-md-0">
-                Copyright © 2023. All rights reserved.
-            </div>
-            <!-- Copyright -->
-
         </div>
     </section>
 

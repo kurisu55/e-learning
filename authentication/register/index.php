@@ -1,9 +1,14 @@
+<!-- SCRIPT AWAL PHP  -->
 <?php
-include '../db/conn_db.php';
+// Require DB
+require '../db/conn_db.php';
 
+// IF untuk aksi tombol register
 if (isset($_POST["register"])) {
-    if (registrasi($_POST) > 0) {
-        header("location:../login/user/index.php");
+    if (empty($_POST["name"] || $_POST["username"] || $_POST["email"] || $_POST["password"])) {
+        header("location:index.php?required");
+    } elseif (registrasi($_POST) > 0) {
+        header("location:../login/index.php?registered");
     } else {
         echo mysqli_error($conn);
     }
@@ -22,72 +27,33 @@ if (isset($_POST["register"])) {
     <title>Register</title>
     <link href="../../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
     <link href="../../assets/style.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="../../assets/img/terminal-solid.svg">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
-    <!-- Sweetalert2 CSS -->
-    <link rel="stylesheet" href="../../assets/sweetalert2/dist/sweetalert2.min.css">
-    <!-- Sweetalert2 JS -->
-    <script src="../../assets/sweetalert2/dist/sweetalert2.min.js"></script>
-
-
-    <style>
-        .background-radial-gradient {
-            background-color: hsl(218, 41%, 15%);
-            background-image: radial-gradient(650px circle at 0% 0%,
-                    hsl(218, 41%, 35%) 15%,
-                    hsl(218, 41%, 30%) 35%,
-                    hsl(218, 41%, 20%) 75%,
-                    hsl(218, 41%, 19%) 80%,
-                    transparent 100%),
-                radial-gradient(1250px circle at 100% 100%,
-                    hsl(218, 41%, 45%) 15%,
-                    hsl(218, 41%, 30%) 35%,
-                    hsl(218, 41%, 20%) 75%,
-                    hsl(218, 41%, 19%) 80%,
-                    transparent 100%);
-        }
-
-        #radius-shape-1 {
-            height: 220px;
-            width: 220px;
-            top: -60px;
-            left: -130px;
-            background: radial-gradient(#44006b, #ad1fff);
-            overflow: hidden;
-        }
-
-        #radius-shape-2 {
-            border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-            bottom: -60px;
-            right: -110px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(#44006b, #ad1fff);
-            overflow: hidden;
-        }
-
-        .bg-glass {
-            background-color: hsla(0, 0%, 100%, 0.9) !important;
-            backdrop-filter: saturate(200%) blur(25px);
-        }
-    </style>
 </head>
 
-<body style="overflow: hidden;">
+<body>
+    <nav class="navbar bg-body-tertiary bg-white fixed-top border">
+        <div class="container-fluid">
+            <a class="navbar-brand btn btn-outline-dark" href="../../index.php">
+                <img src="../../assets/img/terminal-solid.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Code
+            </a>
+        </div>
+    </nav>
     <!-- Section: Design Block -->
     <section class="background-radial-gradient overflow-hidden">
         <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
             <div class="row gx-lg-5 align-items-center mb-5">
-                <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-                    <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-                        DAFTARKAN AKUNMU!
+                <div class="col-lg-6 mb-1 mb-lg-0" style="z-index: 10">
+                    <h1 class="display-5 fw-bold ls-tight" style="text-align: center;">
+                        DAFTAR AKUN!
                     </h1>
-                    <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-                        Anda dapat memasuki kuis hanya dengan mendaftarkan akun kemudian melatih diri setelah melakukan pembelajaranmu.
-                    </p>
+                    <img src="../../assets/img/vecteezy_programmer-people-concept-use-laptop-and-programming-code_.jpg" alt="" class="img img-fluid">
+                    <a href="https://www.vecteezy.com/free-vector/coding" style="display: inline;">Coding Vectors by Vecteezy</a>
                 </div>
 
-                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                <div class="col-lg-6 mt-5 mb-lg-0 position-relative">
                     <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
                     <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
                     <div class="card bg-glass">
@@ -117,7 +83,22 @@ if (isset($_POST["register"])) {
                                     <label for="password" class="visually-hidden">Password</label>
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
                                 </div>
-                                <p class="small"><a href="../login/user/index.php" class="link-success">Login</a> jika sudah punya akun!</p>
+                                <?php if (isset($_GET["success"])) { ?>
+                                    <div class="alert alert-success" role="alert">
+                                        <strong>Berhasil</strong> menambahkan materi!
+                                    </div>
+                                <?php }; ?>
+                                <?php if (isset($_GET["required"])) { ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Lengkapi</strong> semua form!
+                                    </div>
+                                <?php } ?>
+                                <?php if (isset($_GET["duplicated"])) { ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Sudah dipakai.</strong> Silahkan gunakan username dan email yang lain!
+                                    </div>
+                                <?php } ?>
+                                <p class="small"><a href="../login/index.php" class="link-success">Login</a> jika sudah punya akun!</p>
                                 <!-- Submit button -->
                                 <button type="submit" class="btn btn-primary btn-block col col-md-12" class="register" name="register">
                                     Daftar
