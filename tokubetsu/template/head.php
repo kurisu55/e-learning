@@ -6,16 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="author" content="<?= $author; ?>" />
     <title><?= $title; ?></title>
-    <link href="../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+    <link href="../../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="../dashboard.php">Start Bootstrap</a>
+        <a class="navbar-brand btn btn-dark bg-white disabled">
+            <img src="../../assets/img/terminal-solid.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            <span class="text-dark">Code</span>
+        </a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 
@@ -31,7 +34,7 @@
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="../authentication/login/logout.php">Logout</a></li>
+                        <li><a class="dropdown-item" href="../../authentication/login/logout.php">Logout</a></li>
                     </ul>
                 </li>
             </ul>
