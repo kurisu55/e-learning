@@ -15,7 +15,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-white bg-white">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand ps-3 text-center" href="../../index.php"><i class="fas fa-terminal"></i> Code</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -46,9 +46,13 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <p class="dropdown-item"><?= $_SESSION["name"]; ?></p>
-                    <hr class="dropdown-divider">
-                    <li><a class="dropdown-item" href="../../authentication/db/conn_db.php">Logout</a></li>
+                    <?php if (isset($_SESSION["level"])) {
+                        echo "<p class='dropdown-item'>" . $_SESSION["name"] . "</p>";
+                        echo "<hr class='dropdown-divider'>";
+                        echo "<li><a class='dropdown-item' href='../../authentication/login/logout.php'>Logout</a></li>";
+                    } else {
+                        echo "<li><a class='dropdown-item' href='../../authentication/login/index.php'>Login</a></li>";
+                    }; ?>
                 </ul>
             </li>
         </ul>
