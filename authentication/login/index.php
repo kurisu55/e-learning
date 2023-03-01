@@ -17,7 +17,9 @@ if (isset($_POST["login"])) {
     $password = $_POST["password"];
 
     if (empty($username || $password)) {
-        header("location:index.php?required");
+        $_SESSION["required"] = "<div class='alert alert-danger' role='alert'>
+        <strong>Lengkapi</strong> semua form!
+        </div>";
     }
 
     // Menampilkan data berdasarkan username
@@ -37,7 +39,7 @@ if (isset($_POST["login"])) {
                 $_SESSION["level"] = '1';
                 $_SESSION["username"] = $username;
                 $_SESSION["name"] = $name;
-                header("location:../../tokubetsu/dashboard.php");
+                header("location:../../tokubetsu/dashboard/dashboard.php");
                 exit;
             } elseif ($row["level"] == '2') {
                 $_SESSION["level"] = '2';
@@ -88,19 +90,16 @@ if (isset($_POST["login"])) {
                     <div class="divider d-flex align-items-center my-4">
                         <h1 class="text-center fw-bold mx-3 mb-0">Login</h1>
                     </div>
-                    <?php if (isset($error)) : ?>
-                        <p class="alert alert-danger" role="alert">Username atau password salah!</p>
-                    <?php endif ?>
-                    <?php if (isset($_GET["required"])) { ?>
-                        <div class="alert alert-danger" role="alert">
-                            <strong>Lengkapi</strong> semua form!
-                        </div>
-                    <?php } ?>
-                    <?php if (isset($_GET["registered"])) { ?>
-                        <div class="alert alert-success" role="alert">
-                            <strong>Terdaftar.</strong> Silahkan login akun Anda!
-                        </div>
-                    <?php }; ?>
+                    <?php if (isset($error)) {
+                        echo "<p class='alert alert-danger' role='alert'>Username atau password salah!</p>";
+                    }
+                    if (isset($_GET["required"])) {
+                        echo $_SESSION["required"];
+                    }
+                    if (isset($_GET["registered"])) {
+                        echo $_SESSION["registered"];
+                    }
+                    unset($_SESSION["required"], $_SESSION["registered"]); ?>
                     <form action="" method="post">
                         <!-- Email input -->
                         <div class="form-outline mb-4">

@@ -6,9 +6,14 @@ require '../db/conn_db.php';
 // IF untuk aksi tombol register
 if (isset($_POST["register"])) {
     if (empty($_POST["name"] || $_POST["username"] || $_POST["email"] || $_POST["password"])) {
-        header("location:index.php?required");
+        $_SESSION["required"] = "<div class='alert alert-danger' role='alert'>
+        <strong>Lengkapi</strong> semua form!
+        </div>";
     } elseif (registrasi($_POST) > 0) {
-        header("location:../login/index.php?registered");
+        $_SESSION["registered"] = "<div class='alert alert-success' role='alert'>
+        <strong>Terdaftar.</strong> Silahkan login akun Anda!
+        </div>";
+        header("location:../login/index.php");
     } else {
         echo mysqli_error($conn);
     }
@@ -63,7 +68,7 @@ if (isset($_POST["register"])) {
                                 <div class="row">
                                     <div class="form-outline mb-4">
                                         <label for="name" class="visually-hidden">Nama </label>
-                                        <input type="text" class="form-control" id="name" name="nama" placeholder="Nama" autocomplete="off">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nama" autocomplete="off">
                                     </div>
                                 </div>
 
@@ -83,21 +88,15 @@ if (isset($_POST["register"])) {
                                     <label for="password" class="visually-hidden">Password</label>
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
                                 </div>
-                                <?php if (isset($_GET["success"])) { ?>
-                                    <div class="alert alert-success" role="alert">
-                                        <strong>Berhasil</strong> menambahkan materi!
-                                    </div>
-                                <?php }; ?>
-                                <?php if (isset($_GET["required"])) { ?>
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Lengkapi</strong> semua form!
-                                    </div>
-                                <?php } ?>
-                                <?php if (isset($_GET["duplicated"])) { ?>
-                                    <div class="alert alert-danger" role="alert">
-                                        <strong>Sudah dipakai.</strong> Silahkan gunakan username dan email yang lain!
-                                    </div>
-                                <?php } ?>
+                                <?php if (isset($_SESSION["required"])) {
+                                    echo $_SESSION["required"];
+                                    unset($_SESSION["required"]);
+                                }
+                                if (isset($_SESSION["duplicated"])) {
+                                    echo $_SESSION["duplicated"];
+                                    unset($_SESSION["duplicated"]);
+                                }
+                                ?>
                                 <p class="small"><a href="../login/index.php" class="link-success">Login</a> jika sudah punya akun!</p>
                                 <!-- Submit button -->
                                 <button type="submit" class="btn btn-primary btn-block col col-md-12" class="register" name="register">
