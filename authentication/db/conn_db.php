@@ -93,7 +93,7 @@ function updateSoal($data)
     $b = htmlspecialchars(stripslashes($data["b"]));
     $c = htmlspecialchars(stripslashes($data["c"]));
     $d = htmlspecialchars(stripslashes($data["d"]));
-    $aktif = htmlspecialchars(stripslashes('Y'));
+    $aktif = htmlspecialchars(stripslashes(isset($_POST["aktif"]) ? 'Y' : 'N'));
 
     // Query buat soal
     $query = "UPDATE soal SET
