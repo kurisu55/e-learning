@@ -11,21 +11,6 @@ if (!isset($_SESSION["level"]) == 1) {
 // Require DB
 require '../../authentication/db/conn_db.php';
 
-// Set On/Off Kuis
-$soal = mysqli_query($conn, "SELECT * FROM soal");
-$totalkuis = mysqli_num_rows($soal);
-for ($x = 1; $x <= $totalkuis; $x++) {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (isset($_POST["$x"])) {
-            $aktif = $_POST["$x"];
-        } elseif (empty($_POST["$x"])) {
-            $aktif = 'N';
-        }
-        $query = "UPDATE soal SET aktif='$aktif' WHERE id=$x";
-        mysqli_query($conn, $query);
-    }
-}
-
 // Notice Aktif kuis
 $html = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM soal WHERE mode='html' AND aktif='Y'"));
 $php = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM soal WHERE mode='php' AND aktif='Y'"));
@@ -77,21 +62,21 @@ require '../template/sidebar.php';
                     <section class="my-1">
                         <!-- Button Filter Kuis -->
                         <h2>Filter Kuis</h2>
-                        <form action="" method="get">
+                        <form action="" method="post">
                             <div class="row justify-content-around mt-2">
                                 <div class="row col-8">
-                                    <ul class="nav ms-3">
+                                    <ul class="nav ms-2">
                                         <li class="nav-item">
-                                            <a href="" class="btn btn-danger me-2"><i class="fa-brands fa-html5"></i> HTML</a>
+                                            <button type="submit" name="html" class="btn btn-danger me-2"><i class="fa-brands fa-html5"></i> HTML</button>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="btn btn-info me-2"><i class="fa-brands fa-php"></i> PHP</a>
+                                            <button type="submit" name="php" class="btn btn-info me-2"><i class="fa-brands fa-php"></i> PHP</button>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="btn btn-warning me-5"><i class="fa-brands fa-js"></i> Javascript</a>
+                                            <button type="submit" name="js" class="btn btn-warning me-5"><i class="fa-brands fa-js"></i> Javascript</button>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="edit_kuis.php" class="btn btn-secondary"><i class="fas fa-filter"></i> Reset</a>
+                                            <a type="submit" href="edit_kuis.php" class="btn btn-secondary"><i class="fas fa-filter"></i> Reset</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -107,7 +92,7 @@ require '../template/sidebar.php';
                     <hr class="bg-black py-1">
                     <section>
                         <div class="col">
-                            <table class="table table-hover">
+                            <table class="table table-sm table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -117,34 +102,27 @@ require '../template/sidebar.php';
                                         <th scope="col">Aksi</th>
                                     </tr>
                                 </thead>
-                                <form action="" method="post" id="formSetAktif">
-                                    <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php while ($row = mysqli_fetch_assoc($soal)) : ?>
-                                            <tr>
-                                                <th scope="row"><?= $i; ?></th>
-                                                <td><?= htmlspecialchars_decode($row["mode"]); ?></td>
-                                                <td style="overflow-y: auto; width:300px;"><?= htmlspecialchars_decode($row["soal"]); ?></td>
-                                                <td><?= $row["jawaban"]; ?></td>
-                                                <td>
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="<?= $i; ?>" value="Y" <?php if ($row["aktif"] == 'Y') {
-                                                                                                                                                                                    $status = 'ON';
-                                                                                                                                                                                    echo 'checked';
-                                                                                                                                                                                } else {
-                                                                                                                                                                                    $status = 'OFF';
-                                                                                                                                                                                    '';
-                                                                                                                                                                                }; ?> onclick="aktifSubmit()">
-                                                        <label class="form-check-label" for="flexSwitchCheckChecked"><?= $status; ?></label>
-                                                    </div>
-                                                    <a href="Edit.php?id=<?= $row["id"]; ?>" class="btn btn-warning me-2">Edit</a>
-                                                    <a href="Delete.php?id=<?= $row["id"]; ?>" class="btn btn-danger my-1" onclick="return confirm('Konfirmasi hapus?');">Delete</a>
-                                                </td>
-                                            </tr>
-                                    </tbody>
-                                    <?php $i++; ?>
-                                <?php endwhile; ?>
-                                </form>
+                                <tbody>
+                                    <?php $i = 1; ?>
+                                    <?php while ($row = mysqli_fetch_assoc($soal)) : ?>
+                                        <tr>
+                                            <th scope="row"><?= $i; ?></th>
+                                            <td><?= htmlspecialchars_decode($row["mode"]); ?></td>
+                                            <td><?= htmlspecialchars_decode($row["soal"]); ?></td>
+                                            <td><?= $row["jawaban"]; ?></td>
+                                            <td>
+                                                <?php if ($row["aktif"] == 'Y') {
+                                                    echo "<span class='fw-bold text-success p-1' title='ON'>ON</span>";
+                                                } else {
+                                                    echo "<span class='fw-bold text-danger p-1' title='OFF'>OFF</span>";
+                                                }; ?>
+                                                <a href="Edit.php?id=<?= $row["id"]; ?>" class="btn btn-warning ms-1 me-2">Edit</a>
+                                                <a href="Delete.php?id=<?= $row["id"]; ?>" class="btn btn-danger my-1" onclick="return confirm('Konfirmasi hapus?');">Delete</a>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                                <?php $i++; ?>
+                            <?php endwhile; ?>
                             </table>
                         </div>
                     </section>
