@@ -18,6 +18,8 @@ $result = mysqli_fetch_array($soal);
 
 // Aksi Update data soal
 if (isset($_POST["update"])) {
+
+    // 
     if (empty($_POST["mode"] || $_POST["soal"] || $_POST["a"] || $_POST["b"] || $_POST["c"] || $_POST["d"] || $_POST["jawaban"])) {
         $_SESSION["required"] = "<div class='alert alert-danger' role='alert'>
         <strong>Semua input</strong> harus diisi!
@@ -57,12 +59,11 @@ require '../template/sidebar.php';
                 <div class="col order-last mt-4">
                     <?php if (isset($_SESSION["failed"])) {
                         echo $_SESSION["failed"];
-                        unset($_SESSION["failed"]);
                     }
                     if (isset($_SESSION["required"])) {
                         echo $_SESSION["required"];
-                        unset($_SESSION["required"]);
-                    }; ?>
+                    }
+                    unset($_SESSION["failed"], $_SESSION["required"]); ?>
                 </div>
             </div>
             <div class="card mb-4">
@@ -74,9 +75,24 @@ require '../template/sidebar.php';
                             <label for="soal" class="form-label">Soal Kuis</label>
                             <textarea class="ckeditor" id="ckeditor" rows="3" name="soal"><?= htmlspecialchars_decode($result["soal"]); ?></textarea>
                     </div>
-                    <div class="mb-3 col-4">
-                        <label for="jawaban" class="form-label">Jawaban</label>
-                        <input type="text" class="form-control" id="jawaban" placeholder="Jawaban..." name="jawaban" value="<?= htmlspecialchars_decode($result["jawaban"]); ?>" autocomplete="off">
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <label for="jawaban" class="form-label">Jawaban</label>
+                            <input type="text" class="form-control" id="jawaban" placeholder="Jawaban..." name="jawaban" value="<?= htmlspecialchars_decode($result["jawaban"]); ?>" autocomplete="off">
+                        </div>
+                        <div class="ms-5 col-3">
+                            <label for="">Kuis Aktif : </label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="aktif" value="Y" <?php if ($result["aktif"] == 'Y') {
+                                                                                                                                                        $status = 'ON';
+                                                                                                                                                        echo 'checked';
+                                                                                                                                                    } else {
+                                                                                                                                                        $status = 'OFF';
+                                                                                                                                                        '';
+                                                                                                                                                    }; ?> onclick="aktifSubmit()">
+                                <label class="form-check-label" for="flexSwitchCheckChecked"><?= $status; ?></label>
+                            </div>
+                        </div>
                     </div>
                     <div class="mt-3 col-4">
                         <label for="" class="form-label">Pilihan Jawaban</label>
