@@ -14,7 +14,7 @@ require '../../authentication/db/conn_db.php';
 // Notice Aktif kuis
 $html = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM soal WHERE mode='html' AND aktif='Y'"));
 $php = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM soal WHERE mode='php' AND aktif='Y'"));
-$js = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM soal WHERE mode='js' AND aktif='Y'"));
+$js = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM soal WHERE mode='Javascript' AND aktif='Y'"));
 
 // Query filter soal
 if (isset($_POST["html"])) {
@@ -22,7 +22,7 @@ if (isset($_POST["html"])) {
 } elseif (isset($_POST["php"])) {
     $soal = mysqli_query($conn, "SELECT * FROM soal WHERE mode='php'");
 } elseif (isset($_POST["js"])) {
-    $soal = mysqli_query($conn, "SELECT * FROM soal WHERE mode='js'");
+    $soal = mysqli_query($conn, "SELECT * FROM soal WHERE mode='Javascript'");
 } else {
     $soal = mysqli_query($conn, "SELECT * FROM soal");
 }
