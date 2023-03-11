@@ -6,26 +6,71 @@ session_start();
 // Connection DB
 require '../../authentication/db/conn_db.php';
 
-// Mengatur Pagination dari database
-$dataPerHalaman = 1;
-$halaman = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$halamanAwal = ($halaman > 1) ? ($halaman * $dataPerHalaman) - $dataPerHalaman : 0;
+// Query menampilkan soal
+$query = mysqli_query($conn, "SELECT * FROM soal WHERE mode='html' AND aktif='Y'");
 
-$previous = $halaman - 1;
-$next = $halaman + 1;
+$totalSoal = mysqli_num_rows($query);
 
-$data = mysqli_query($conn, "SELECT * FROM soal WHERE mode='html'");
-$result = mysqli_num_rows($data);
-$totalHalaman = ceil($result / $dataPerHalaman);
+// Aksi input jawaban
+if (isset($_POST["submit"])) {
+    $pilihan = $_POST["pilihan"];
+    $id_soal = $_POST["id"];
+    $jumlah = $_POST["jumlah"];
 
-// Menampilkan soal dari database
-$soal = mysqli_query($conn, "SELECT * FROM soal WHERE mode='html' AND aktif='Y' LIMIT $halamanAwal,$dataPerHalaman");
-$i = $halamanAwal + 1;
+    $score = 0;
+    $benar = 0;
+    $salah = 0;
+    $kosong = 0;
+
+    for ($i = 0; $i < $jumlah; $i++) {
+        $nomor = $id_soal["$i"];
+
+        if (empty($pilihan[$nomor])) {
+            $kosong++;
+        } else {
+            // jika memilih
+            $jawaban = $pilihan[$nomor];
+
+            // cocokan jawaban dengan yang ada didatabase
+            $sql = "SELECT * FROM soal WHERE id='$nomor' AND mode='html' AND jawaban='$jawaban'";
+            $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+            $cek = mysqli_num_rows($query);
+
+            if ($cek) {
+                // jika jawaban cocok (benar)
+                $benar++;
+            } else {
+                // jika salah
+                $salah++;
+            }
+        }
+        /*
+				----------
+				Nilai 100
+				----------
+				Hasil = 100 / jumlah soal * Jawaban Benar
+			*/
+
+        $sql = "SELECT * FROM soal WHERE mode='html' AND aktif='Y'";
+        $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+        $jumlah_soal = mysqli_num_rows($query);
+        $score = 100 / $jumlah_soal * $benar;
+        $hasil = number_format($score, 1);
+    }
+    // Simpan kedalam database
+    $_SESSION["score"] = $score;
+    $_SESSION["result"] = $benar;
+    $_SESSION["btnResult"] = "<a href='index.php' class='btn btn-success mt-5'>Selesai</a>";
+}
+
+
 
 // Variabel Template
 $title = 'HTML Kuis';
 $author = 'Kristovel Adi S.';
 $description = 'Quiz Programming, Kuis HTML, HTML, e-learning';
+
 
 // Pemanggilan File Template
 require '../template/head.php';
@@ -38,68 +83,89 @@ require '../template/sidebar.php';
             <h1 class="mt-4"><?= $title ?></h1>
             <div class="card mb-4">
                 <div class="card-body">
-                    <div class="m-5">
-                        <form action="" method="post">
-                            <?php while ($row = mysqli_fetch_array($soal)) : ?>
-                                <ul class="nav">
-                                    <li class="nav-item">
-                                        <p style="width: 20px;"><?= $i++ . ". "; ?></p>
-                                    </li>
-                                    <li class="nav-item">
-                                        <span><?= htmlspecialchars_decode($row["soal"]); ?></span>
-                                    </li>
-                                </ul>
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <div class="border" id="bg-tr">
-                                            <p class="py-1 radio-answer" id="a"><input type="radio" name="<?= $row["id"]; ?>" value="a"><?= $row["a"]; ?></p>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <div class="border" id="bg-tr">
-                                            <p class="py-2 radio-answer" id="b"><input type="radio" name="<?= $row["id"]; ?>" value="b"><?= $row["b"]; ?></p>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <div class="border" id="bg-tr">
-                                            <p class="py-2 radio-answer" id="c"><input type="radio" name="<?= $row["id"]; ?>" value="c"><?= $row["c"]; ?></p>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <div class="border" id="bg-tr">
-                                            <p class="py-2 radio-answer" id="d"><input type="radio" name="<?= $row["id"]; ?>" value="d"><?= $row["d"]; ?></p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            <?php endwhile; ?>
-                        </form>
+                    <div style="float: right;">
+                        <?php if (isset($_SESSION["result"])) {
+                            echo "<p>Jumlah Jawaban Benar: $benar" . "</p>";
+                            if ($_SESSION["score"] <= 49) {
+                                echo "<div class='alert alert-danger col-5' role='alert'>
+                                    <strong class='text-danger'>" . $_SESSION["score"] . "</strong>
+                                    </div>";
+                            } elseif ($_SESSION["score"] <= 79) {
+                                echo "<div class='alert alert-warning col-5' role='alert'>
+                                    <strong class='text-warning'>" . $_SESSION["score"] . "</strong>
+                                    </div>";
+                            } else if ($_SESSION["score"] > 79) {
+                                echo "<div class='alert alert-success col-5' role='alert'>
+                                    <strong class='text-success'>" . $_SESSION["score"] . "</strong>
+                                    </div>";
+                            }
+                        }
+                        unset($_SESSION["result"], $_SESSION["score"]); ?>
                     </div>
+                    <table border="1" style="border: none;">
+                        <tbody>
+                            <?php $no = 0; ?>
+                            <?php while ($row = mysqli_fetch_array($query)) : ?>
+                                <form action="" method="post">
+                                    <input type="hidden" name="id[]" value="<?= $row["id"]; ?>">
+                                    <input type="hidden" name="jumlah" value="<?= $totalSoal; ?>">
+                                    <tr>
+                                        <td>
+                                            <p> <?= $no = $no + 1; ?>. </p>
+                                        </td>
+                                        <td> <?= htmlspecialchars_decode($row["soal"]); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input class="form-check-input" type="radio" name="pilihan[<?= $row['id']; ?>]" id="a" value="<?= $row['a']; ?>" required>
+                                            <?= $row['a']; ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="pilihan[<?= $row['id']; ?>]" id="b" value="<?= $row['b']; ?>" required>
+                                                <?= $row['b']; ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="pilihan[<?= $row['id']; ?>]" id="c" value="<?= $row['c']; ?>" required>
+                                                <?= $row['c']; ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="pilihan[<?= $row['id']; ?>]" id="d" value="<?= $row['d']; ?>" required>
+                                                <?= $row['d']; ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <?php if (isset($_SESSION["btnResult"])) {
+                                            echo  $_SESSION["btnResult"];
+                                            unset($_SESSION["btnResult"]);
+                                        } else {
+                                            echo  "<button type='submit' class='btn btn-info mt-5' name='submit'>Submit</button>";
+                                        }; ?>
+                                    </td>
+                                </tr>
+                                </form>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" <?php if ($halaman > 1) {
-                                                    echo "href='?page=$previous'";
-                                                } ?> aria-label="Previous" title="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <?php for ($x = 1; $x <= $totalHalaman; $x++) {
-                    ?>
-                        <li class="page-item"><a class="page-link" href="?page=<?php echo $x ?>"><?php echo $x; ?></a></li>
-                    <?php
-                    }
-                    ?>
-                    <li class="page-item">
-                        <a class="page-link" <?php if ($halaman < $totalHalaman) {
-                                                    echo "href='?page=$next'";
-                                                } ?> aria-label="Next" title="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </main>
 
