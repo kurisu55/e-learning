@@ -14,12 +14,12 @@ require '../../authentication/db/conn_db.php';
 // Query menampilkan materi
 $resultMateriHTML = mysqli_query($conn, "SELECT * FROM materi WHERE mode='html'");
 $resultMateriPHP = mysqli_query($conn, "SELECT * FROM materi WHERE mode='php'");
-$resultMateriJS = mysqli_query($conn, "SELECT * FROM materi WHERE mode='js'");
+$resultMateriJS = mysqli_query($conn, "SELECT * FROM materi WHERE mode='javascript'");
 
 // Query menampilkan kuis
 $resultKuisHTML = mysqli_query($conn, "SELECT * FROM soal WHERE mode='html'");
 $resultKuisPHP = mysqli_query($conn, "SELECT * FROM soal WHERE mode='php'");
-$resultKuisJS = mysqli_query($conn, "SELECT * FROM soal WHERE mode='js'");
+$resultKuisJS = mysqli_query($conn, "SELECT * FROM soal WHERE mode='javascript'");
 
 
 // Variabel Template
