@@ -56,12 +56,12 @@ if (isset($_POST["submit"])) {
         $query = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         $jumlah_soal = mysqli_num_rows($query);
         $score = 100 / $jumlah_soal * $benar;
-        $hasil = number_format($score, 1);
+        $hasil = ceil($score);
     }
     // Simpan kedalam database
-    $_SESSION["score"] = $score;
+    $_SESSION["score"] = $hasil;
     $_SESSION["result"] = $benar;
-    $_SESSION["btnResult"] = "<a href='index.php' class='btn btn-success mt-5'>Selesai</a>";
+    header("location:../Result.php?js");
 }
 
 
@@ -80,28 +80,9 @@ require '../template/sidebar.php';
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4"><?= $title ?></h1>
+            <h1><?= $title ?></h1>
             <div class="card mb-4">
                 <div class="card-body">
-                    <div style="float: right;">
-                        <?php if (isset($_SESSION["result"])) {
-                            echo "<p class=''>Jumlah Jawaban Benar: $benar" . "</p>";
-                            if ($_SESSION["score"] <= 49) {
-                                echo "<div class='alert alert-danger col-5' role='alert'>
-                                    <strong class='text-danger'>" . $_SESSION["score"] . "</strong>
-                                    </div>";
-                            } elseif ($_SESSION["score"] <= 79) {
-                                echo "<div class='alert alert-warning col-5' role='alert'>
-                                    <strong class='text-warning'>" . $_SESSION["score"] . "</strong>
-                                    </div>";
-                            } else if ($_SESSION["score"] > 79) {
-                                echo "<div class='alert alert-success col-5' role='alert'>
-                                    <strong class='text-success'>" . $_SESSION["score"] . "</strong>
-                                    </div>";
-                            }
-                        }
-                        unset($_SESSION["result"], $_SESSION["score"]); ?>
-                    </div>
                     <table border="1" style="border: none;">
                         <tbody>
                             <?php $no = 0; ?>
@@ -153,12 +134,7 @@ require '../template/sidebar.php';
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <?php if (isset($_SESSION["btnResult"])) {
-                                            echo  $_SESSION["btnResult"];
-                                            unset($_SESSION["btnResult"]);
-                                        } else {
-                                            echo  "<button type='submit' class='btn btn-info mt-5' name='submit'>Submit</button>";
-                                        }; ?>
+                                        <button type="submit" class="btn btn-info mt-5" name="submit">Submit</button>
                                     </td>
                                 </tr>
                                 </form>
