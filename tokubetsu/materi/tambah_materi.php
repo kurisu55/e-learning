@@ -61,22 +61,31 @@ require '../template/sidebar.php';
             <div class="card mb-4">
                 <div class="card-body">
                     <form action="" method="post">
-                        <div class="col-4 mb-3">
-                            <label for="mode" class="form-label">Mode Bahasa</label>
-                            <input class="form-control" list="datalistOptions" id="mode" name="mode" placeholder="Bahasa...">
-                            <datalist id="datalistOptions">
-                                <option value="HTML">
-                                <option value="PHP">
-                                <option value="Javascript">
-                            </datalist>
+                        <div class="row">
+                            <div class="col-4 mb-3">
+                                <label for="mode" class="form-label">Mode Bahasa</label>
+                                <input class="form-control" list="datalistOptions" id="mode" name="mode" placeholder="Bahasa...">
+                                <datalist id="datalistOptions">
+                                    <option value="HTML">
+                                    <option value="PHP">
+                                    <option value="Javascript">
+                                </datalist>
+                            </div>
+                            <div class="mb-3 col-4">
+                                <label for="judul" class="form-label">Judul Materi</label>
+                                <input type="text" class="form-control" id="judul" name="judul">
+                            </div>
                         </div>
-                        <div class="mb-3 col-4">
-                            <label for="judul" class="form-label">Judul Materi</label>
-                            <input type="text" class="form-control" id="judul" name="judul">
-                        </div>
-                        <div class="col-10 mb-3">
+                        <div class="col mb-3">
                             <label for="materi" class="form-label">Isi Materi</label>
-                            <textarea class="ckeditor" id="ckeditor" rows="3" name="isi" style="height: 175px;" placeholder="" value=""></textarea>
+                            <textarea class="ckeditor" id="editor1" rows="3" name="isi" style="height: 175px;">
+                            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+                            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script></textarea>
+                        </div>
+                        <div class="col mb-3">
+                            <legend class="small"><i class="fas fa-eye"></i> Preview Materi</legend>
+                            <iframe class="py-1 mb-1" id="preview" frameborder="1" width="100%" height="300" style="border: 0.5px solid;"></iframe>
                         </div>
                         <button class="btn btn-success mt-3" id="button" type="submit" name="tambah">Tambah Materi</button>
                     </form>
