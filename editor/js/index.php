@@ -104,7 +104,6 @@ $author = 'Kristovel Adi S.';
 
     <!-- Javascript Code -->
     <script>
-        var delay;
         // Initialize CodeMirror editor with a nice html5 canvas demo.
         var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
             mode: 'text/html',
