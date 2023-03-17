@@ -83,63 +83,31 @@ require '../template/sidebar.php';
             <h1><?= $title ?></h1>
             <div class="card mb-4">
                 <div class="card-body">
-                    <table border="1" style="border: none;">
-                        <tbody>
-                            <?php $no = 0; ?>
-                            <?php while ($row = mysqli_fetch_array($query)) : ?>
-                                <form action="" method="post">
-                                    <input type="hidden" name="id[]" value="<?= $row["id"]; ?>">
-                                    <input type="hidden" name="jumlah" value="<?= $totalSoal; ?>">
-                                    <tr>
-                                        <td>
-                                            <p> <?= $no = $no + 1; ?>. </p>
-                                        </td>
-                                        <td> <?= htmlspecialchars_decode($row["soal"]); ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <input class="form-check-input" type="radio" name="pilihan[<?= $row['id']; ?>]" id="a" value="<?= $row['a']; ?>" required>
-                                            <?= $row['a']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="pilihan[<?= $row['id']; ?>]" id="b" value="<?= $row['b']; ?>" required>
-                                                <?= $row['b']; ?>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="pilihan[<?= $row['id']; ?>]" id="c" value="<?= $row['c']; ?>" required>
-                                                <?= $row['c']; ?>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="pilihan[<?= $row['id']; ?>]" id="d" value="<?= $row['d']; ?>" required>
-                                                <?= $row['d']; ?>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php endwhile; ?>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <button type="submit" class="btn btn-info mt-5" name="submit">Submit</button>
-                                    </td>
-                                </tr>
-                                </form>
-                        </tbody>
-                    </table>
+                    <?php $no = 0; ?>
+                    <?php while ($row = mysqli_fetch_array($query)) : ?>
+                        <form action="" method="post">
+                            <input type="hidden" name="id[]" value="<?= $row["id"]; ?>">
+                            <input type="hidden" name="jumlah" value="<?= $totalSoal; ?>">
+                            <span style="display:flex;"><?= $no = $no + 1; ?>.<?= htmlspecialchars_decode($row["soal"]); ?></span>
+                            <div class="form-check col-5">
+                                <input class="form-check-input p-1" type="radio" name="pilihan[<?= $row['id']; ?>]" id="a" value="<?= $row['a']; ?>" required>
+                                <?= $row['a']; ?>
+                            </div>
+                            <div class="form-check col-5">
+                                <input class="form-check-input p-1" type="radio" name="pilihan[<?= $row['id']; ?>]" id="b" value="<?= $row['b']; ?>" required>
+                                <?= $row['b']; ?>
+                            </div>
+                            <div class="form-check col-5">
+                                <input class="form-check-input p-1" type="radio" name="pilihan[<?= $row['id']; ?>]" id="c" value="<?= $row['c']; ?>" required>
+                                <?= $row['c']; ?>
+                            </div>
+                            <div class="form-check mb-2 col-5">
+                                <input class="form-check-input p-1" type="radio" name="pilihan[<?= $row['id']; ?>]" id="d" value="<?= $row['d']; ?>" required>
+                                <?= $row['d']; ?>
+                            </div>
+                        <?php endwhile; ?>
+                        <button type="submit" class="btn btn-info mt-5" name="submit">Submit</button>
+                        </form>
                 </div>
             </div>
         </div>
