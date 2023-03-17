@@ -9,6 +9,9 @@
     <meta name="author" content="<?= $author; ?>" />
     <title><?= $title; ?></title>
     <link href="../../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/codemirror/lib/codemirror.css">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/terminal-solid.svg" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 

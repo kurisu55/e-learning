@@ -22,12 +22,24 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <!-- Ckeditor JS Lib -->
 <script type="text/javascript" src="../../assets/ckeditor/ckeditor.js"></script>
+
 <script>
-    // Set Kuis Aktif
-    function aktifSubmit() {
-        document.getElementById("formSetAktif").submit();
-    }
+    CKEDITOR.replace('editor1');
+    CKEDITOR.instances.editor1.on('change', function() {
+        var editorValue = CKEDITOR.instances.editor1.getData();
+        var previewFrame = document.getElementById('preview').contentWindow.document;
+        previewFrame.write(editorValue);
+        previewFrame.close();
+    });
+
+    // function preview() {
+    //     var editorValue = CKEDITOR.instances.editor1.getData();
+    //     var previewFrame = document.getElementById('preview').contentWindow.document;
+    //     previewFrame.write(editorValue);
+    //     previewFrame.close();
+    // }
 </script>
+
 <script>
     // Chart Materi
     var ctx = document.getElementById('materiChart'); // node
