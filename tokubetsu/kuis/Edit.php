@@ -73,7 +73,7 @@ require '../template/sidebar.php';
                             <input type="hidden" name="id" value="<?= $result["id"]; ?>">
                             <input type="hidden" name="mode" value="<?= $result["mode"]; ?>">
                             <label for="soal" class="form-label">Soal Kuis</label>
-                            <textarea class="ckeditor" id="ckeditor" rows="3" name="soal"><?= htmlspecialchars_decode($result["soal"]); ?></textarea>
+                            <textarea class="ckeditor" id="editor3" rows="3" name="soal"><?= htmlspecialchars_decode($result["soal"]); ?></textarea>
                     </div>
                     <div class="row mb-3">
                         <div class="col-4">

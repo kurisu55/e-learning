@@ -72,7 +72,7 @@ require '../template/sidebar.php';
                         </div>
                         <div class="col-10 mb-3">
                             <label for="soal" class="form-label">Soal Kuis</label>
-                            <textarea class="ckeditor" id="ckeditor" rows="3" name="soal" name="soal"></textarea>
+                            <textarea class="ckeditor" id="editor2" rows="3" name="soal" name="soal"></textarea>
                         </div>
                         <div class="mb-3 col-4">
                             <label for="jawaban" class="form-label">Jawaban</label>
@@ -80,21 +80,23 @@ require '../template/sidebar.php';
                         </div>
                         <div class="mt-3 col-4">
                             <label for="" class="form-label">Pilihan Jawaban</label>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="a"><b>A</b></span>
-                                <input type="text" class="form-control" placeholder="Pilihan A" aria-label="Pilihan A" aria-describedby="a" name="a" autocomplete="off">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="b"><b>B</b></span>
-                                <input type="text" class="form-control" placeholder="Pilihan B" aria-label="Pilihan B" aria-describedby="b" name="b" autocomplete="off">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="c"><b>C</b></span>
-                                <input type="text" class="form-control" placeholder="Pilihan C" aria-label="Pilihan C" aria-describedby="c" name="c" autocomplete="off">
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-text" id="d"><b>D</b></span>
-                                <input type="text" class="form-control" placeholder="Pilihan D" aria-label="Pilihan D" aria-describedby="d" name="d" autocomplete="off">
+                            <div class="row">
+                                <div class="input-group col-3 mb-1">
+                                    <span class="input-group-text" id="a"><b>A</b></span>
+                                    <input type="text" class="form-control" placeholder="Pilihan A" aria-label="Pilihan A" aria-describedby="a" name="a" autocomplete="off">
+                                </div>
+                                <div class="input-group col-3 mb-1">
+                                    <span class="input-group-text" id="b"><b>B</b></span>
+                                    <input type="text" class="form-control" placeholder="Pilihan B" aria-label="Pilihan B" aria-describedby="b" name="b" autocomplete="off">
+                                </div>
+                                <div class="input-group col-3 mb-1">
+                                    <span class="input-group-text" id="c"><b>C</b></span>
+                                    <input type="text" class="form-control" placeholder="Pilihan C" aria-label="Pilihan C" aria-describedby="c" name="c" autocomplete="off">
+                                </div>
+                                <div class="input-group col-3 mb-1">
+                                    <span class="input-group-text" id="d"><b>D</b></span>
+                                    <input type="text" class="form-control" placeholder="Pilihan D" aria-label="Pilihan D" aria-describedby="d" name="d" autocomplete="off">
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-success mt-5" id="button" name="btnBuat">Buat Soal</button>
                     </form>
