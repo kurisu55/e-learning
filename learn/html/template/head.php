@@ -5,11 +5,20 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="<?= $description; ?>" />
+    <meta name="author" content="<?= $author; ?>" />
     <title><?= $title; ?></title>
     <link href="../../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+    <!-- Font Roboto -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/terminal-solid.svg" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -25,20 +34,13 @@
                 <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
             </div>
         </form>
-        <button class="btn btn-outline-primary me-3"><i class="fas fa-rotate"></i></button>
-        <!-- Example single danger button -->
+        <!-- Dropdown Mode Tutorial -->
         <div class="btn-group me-2">
-            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Action
-            </button>
+            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Mode Tutorial</button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="index.php">HTML</a></li>
+                <li><a class="dropdown-item" href="../js">Javascript</a></li>
+                <li><a class="dropdown-item" href="../php">PHP</a></li>
             </ul>
         </div>
         <!-- Navbar-->

@@ -9,7 +9,16 @@
     <meta name="author" content="" />
     <title><?= $title; ?></title>
     <link href="../../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+    <!-- Font Roboto -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/terminal-solid.svg" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -28,17 +37,11 @@
         <button class="btn btn-outline-primary me-3"><i class="fas fa-rotate"></i></button>
         <!-- Example single danger button -->
         <div class="btn-group me-2">
-            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Action
-            </button>
+            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Mode Tutorial</button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                <li><a class="dropdown-item" href="../html">HTML</a></li>
+                <li><a class="dropdown-item" href="index.php">Javascript</a></li>
+                <li><a class="dropdown-item" href="../php">PHP</a></li>
             </ul>
         </div>
         <!-- Navbar-->
