@@ -17,6 +17,8 @@ $author = 'Kristovel Adi S.';
     <meta name="author" content="<?= $author; ?>" />
     <title><?= $title; ?></title>
     <link href="../../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../../assets/img/terminal-solid.svg" />
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -32,9 +34,6 @@ $author = 'Kristovel Adi S.';
     <!-- Theme CodeMirror-->
     <link rel="stylesheet" href="../../assets/codemirror/theme/dracula.css">
     <link rel="stylesheet" href="../../assets/codemirror/theme/base16-light.css">
-
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/sidebar/assets/favicon.ico" />
 
     <!-- CodeMirror JS -->
     <script src="../../assets/codemirror/lib/codemirror.js"></script>
@@ -55,8 +54,8 @@ $author = 'Kristovel Adi S.';
     <style>
         iframe {
             width: 100%;
-            height: 300px;
-            border: 2px solid black;
+            height: 500px;
+            border: 0.5px solid;
         }
     </style>
 </head>
@@ -64,9 +63,9 @@ $author = 'Kristovel Adi S.';
 <body>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                Bootstrap
+            <a class="navbar-brand btn btn-outline-dark" href="../../index.php">
+                <img src="../../assets/img/terminal-solid.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Code
             </a>
         </div>
     </nav>
@@ -89,18 +88,25 @@ $author = 'Kristovel Adi S.';
                 </span>
             </li>
         </ul>
-        <div class="mx-2">
-            <textarea id="code"></textarea>
-            <div class="my-2"></div>
-            <iframe id="preview" style="background-color: white;"></iframe>
+        <div class="mx-2 mb-1">
+            <div class="row">
+                <div class="col">
+                    <textarea id="code"><?php
+                                        if (isset($_SESSION["tutorial"])) {
+                                            echo $_SESSION["tutorial"];
+                                        }; ?>
+                    </textarea>
+                </div>
+                <div class="col">
+                    <iframe id="preview" style="background-color: white;"></iframe>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Library Javascript -->
     <!-- SB Admin JS -->
     <script src="../../assets/startbootstrap-sb-admin-gh-pages/js/scripts.js"></script>
-    <!-- Main JS -->
-    <script src="../../assets/main.js"></script>
 
     <script>
         var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
@@ -119,6 +125,9 @@ $author = 'Kristovel Adi S.';
                 }
             }
         });
+        editor.setSize("100%", 500);
+
+        // Preview Code PHP
         document.getElementById("preview").addEventListener("click", function() {
             document.getElementById("output").innerHTML = editor.getValue();
         });
