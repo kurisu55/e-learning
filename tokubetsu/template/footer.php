@@ -24,6 +24,7 @@
 <script type="text/javascript" src="../../assets/ckeditor/ckeditor.js"></script>
 
 <script>
+    // Preview CKEditor Materi
     CKEDITOR.replace('editor1');
     CKEDITOR.instances.editor1.on('change', function() {
         var editorValue = CKEDITOR.instances.editor1.getData();
@@ -31,13 +32,6 @@
         previewFrame.write(editorValue);
         previewFrame.close();
     });
-
-    // function preview() {
-    //     var editorValue = CKEDITOR.instances.editor1.getData();
-    //     var previewFrame = document.getElementById('preview').contentWindow.document;
-    //     previewFrame.write(editorValue);
-    //     previewFrame.close();
-    // }
 </script>
 
 <script>
@@ -56,7 +50,10 @@
             ],
             datasets: [{
                 label: 'Total Materi',
-                data: [<?= mysqli_num_rows($resultMateriHTML); ?>, <?= mysqli_num_rows($resultMateriPHP); ?>, <?= mysqli_num_rows($resultMateriJS); ?>],
+                data: [<?= mysqli_num_rows($resultMateriHTML); ?>,
+                    <?= mysqli_num_rows($resultMateriPHP); ?>,
+                    <?= mysqli_num_rows($resultMateriJS); ?>
+                ],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
@@ -82,7 +79,10 @@
             ],
             datasets: [{
                 label: 'Kuis Tersedia',
-                data: [<?= mysqli_num_rows($resultKuisHTML); ?>, <?= mysqli_num_rows($resultKuisPHP); ?>, <?= mysqli_num_rows($resultKuisJS); ?>],
+                data: [<?= mysqli_num_rows($resultKuisHTML); ?>,
+                    <?= mysqli_num_rows($resultKuisPHP); ?>,
+                    <?= mysqli_num_rows($resultKuisJS); ?>
+                ],
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
@@ -92,6 +92,38 @@
             }]
         }
     });
+</script>
+<script>
+    // Tambah Referensi Link
+    function addReference() {
+
+        // Buat elemen input text baru
+        const reference = document.createElement("input");
+        reference.type = "text";
+        reference.name = "reference[]";
+        reference.id = "reference";
+        reference.placeholder = "Sumber";
+
+
+        // Buat elemen label baru
+        const label = document.createElement("label");
+        label.for = "reference";
+        label.innerText = "=";
+
+        // Buat elemen input text baru
+        const URL = document.createElement("input");
+        URL.type = "text";
+        URL.style = "margin-right:10px;"
+        URL.name = "url[]";
+        URL.id = "url";
+        URL.placeholder = "URL";
+
+        // Tambahkan elemen label dan input ke dalam container
+        const container = document.getElementById("input-reference");
+        container.appendChild(reference);
+        container.appendChild(label);
+        container.appendChild(URL);
+    }
 </script>
 </body>
 
