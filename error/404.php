@@ -9,6 +9,8 @@
     <meta name="author" content="" />
     <title>Error 404</title>
     <link href="../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/img/terminal-solid.svg" type="image/x-icon">
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
@@ -36,7 +38,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div class="text-muted">Copyright &copy; Code 2023</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;
