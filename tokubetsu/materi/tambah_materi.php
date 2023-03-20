@@ -11,9 +11,14 @@ if (!isset($_SESSION["level"]) == 1) {
 // Require DB
 require '../../authentication/db/conn_db.php';
 
+
 // Tambah Materi
 if (isset($_POST["tambah"])) {
-    if (empty($_POST["mode"] || $_POST["judul"] || $_POST["isi"])) {
+    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //     $reference = $_POST['reference'];
+    //     $url = $_POST["url"];
+    // }
+    if (empty($_POST["mode"] || $_POST["judul"])) {
         $_SESSION["required"] = "<div class='alert alert-danger' role='alert'>
         <strong>Semua input</strong> harus diisi!
         </div>";
@@ -73,8 +78,13 @@ require '../template/sidebar.php';
                             </div>
                             <div class="mb-3 col-4">
                                 <label for="judul" class="form-label">Judul Materi</label>
-                                <input type="text" class="form-control" id="judul" name="judul">
+                                <input type="text" class="form-control" id="judul" name="judul" autocomplete="off">
                             </div>
+                        </div>
+                        <div>
+                            <label for="" class="form-label">Referensi</label>
+                            <button type="button" class="btn btn-secondary btn-sm" onclick="addReference()" title="Sumber Referensi"><i class="fas fa-plus"></i></button>
+                            <div class="mb-3 mt-1" id="input-reference"></div>
                         </div>
                         <div class="col mb-3">
                             <label for="materi" class="form-label">Isi Materi</label>
