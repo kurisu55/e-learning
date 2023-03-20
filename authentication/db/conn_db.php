@@ -50,9 +50,11 @@ function tambahMateri($data)
     $mode = htmlspecialchars(stripslashes($data["mode"]));
     $judul = stripslashes($mode . " " . htmlspecialchars(stripslashes($data["judul"])));
     $isi = htmlspecialchars(stripslashes($data["isi"]));
+    $reference = htmlspecialchars(stripslashes(implode(",", $data["reference"])));
+    $url = htmlspecialchars(stripslashes(implode(",", $data["url"])));
 
     // Query tambah materi
-    $query = "INSERT INTO materi VALUES('','$mode','$judul','$isi')";
+    $query = "INSERT INTO materi VALUES('','$mode','$judul','$isi','$reference','$url')";
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
