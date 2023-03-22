@@ -8,9 +8,7 @@ if (isset($_SESSION["level"]) == 1) {
 }
 
 // Connet DB
-require 'authentication/db/conn_db.php'
-
-// Query
+require 'authentication/db/conn_db.php';
 
 ?>
 
@@ -53,8 +51,8 @@ require 'authentication/db/conn_db.php'
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="learn/html">Tutorial HTML</a></li>
-                    <li><a class="dropdown-item" href="learn/php">Tutorial PHP</a></li>
                     <li><a class="dropdown-item" href="learn/js">Tutorial Javascript</a></li>
+                    <li><a class="dropdown-item" href="learn/php">Tutorial PHP</a></li>
                 </ul>
             </div>
             <!-- Kuis Button -->
@@ -64,8 +62,8 @@ require 'authentication/db/conn_db.php'
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="kuis/html">Kuis HTML</a></li>
-                    <li><a class="dropdown-item" href="kuis/php">Kuis PHP</a></li>
                     <li><a class="dropdown-item" href="kuis/js">Kuis Javascript</a></li>
+                    <li><a class="dropdown-item" href="kuis/php">Kuis PHP</a></li>
                 </ul>
             </div>
             <?php if (isset($_SESSION["level"])) {
@@ -89,24 +87,13 @@ require 'authentication/db/conn_db.php'
                     <div class="text-center text-white">
                         <!-- Page heading-->
                         <h1 class="mb-5">Belajar Code</h1>
-                        <form class="form-subscribe" id="contactForm">
-                            <!-- Email address input-->
-                            <div class="row">
-                                <div class="col">
-                                    <input class="form-control form-control-lg" id="searchMateri" type="search" placeholder="Ketik pencarian disini!" />
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="border">
-                                                <h5 class="card-title text-dark mt-2 mx-1" style="text-align: initial;">Card title</h5>
-                                                <hr class="border border-dark border-2 opacity-50">
-                                                <p class="card-text text-dark mx-1" style="text-align: left;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="col-auto"><button class="btn btn-primary btn-lg" type="submit">Submit</button></div> -->
+                        <div class="row">
+                            <div class="col">
+                                <input class="form-control form-control-lg" id="search" type="search" placeholder="Ketik pencarian disini!" />
+                                <div class="list-group" id="materi"></div>
                             </div>
-                        </form>
+                            <!-- <div class="col-auto"><button class="btn btn-primary btn-lg" type="submit">Submit</button></div> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,9 +183,29 @@ require 'authentication/db/conn_db.php'
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Jquery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Core theme JS-->
     <script src="assets/startbootstrap-landing-page-gh-pages/js/scripts.js"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#search').keyup(function() {
+                var keyword = $(this).val();
+                $.ajax({
+                    url: 'data-materi.php',
+                    type: 'post',
+                    data: {
+                        keyword: keyword
+                    },
+                    success: function(data) {
+                        $('#materi').html(data);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
