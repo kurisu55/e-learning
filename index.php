@@ -36,47 +36,52 @@ require 'authentication/db/conn_db.php';
 
 <body>
     <!-- Navigation-->
-    <nav class="navbar navbar-light bg-light static-top">
-        <div class="container">
-            <div class="col-8">
-                <a class="navbar-brand btn btn-outline-dark" href="index.php">
-                    <img src="assets/img/terminal-solid.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                    Code
-                </a>
-            </div>
-            <!-- Tutorial Button -->
-            <div class="btn-group ms-4">
-                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Tutorial
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="learn/html">Tutorial HTML</a></li>
-                    <li><a class="dropdown-item" href="learn/js">Tutorial Javascript</a></li>
-                    <li><a class="dropdown-item" href="learn/php">Tutorial PHP</a></li>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand btn btn-outline-dark" href="index.php">
+                <img src="assets/img/terminal-solid.svg" alt="Logo" width="30" height="24">
+                Code
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark mt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tutorial
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="learn/html/1.php">Tutorial HTML</a></li>
+                            <li><a class="dropdown-item" href="learn/js/1.php">Tutorial Javascript</a></li>
+                            <li><a class="dropdown-item" href="learn/php/1.php">Tutorial PHP</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark mt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Kuis
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="kuis/html">Kuis HTML</a></li>
+                            <li><a class="dropdown-item" href="kuis/js">Kuis Javascript</a></li>
+                            <li><a class="dropdown-item" href="kuis/php">Kuis PHP</a></li>
+                        </ul>
+                    </li>
                 </ul>
+                <div class="d-flex me-3">
+                    <?php if (isset($_SESSION["level"])) {
+                        echo  "<a class='nav-link dropdown-toggle' id='navbarDropdown' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'><i class='fas fa-user fa-fw'></i></a>";
+                        echo  "<ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>";
+                        echo "<p class='dropdown-item'>" . $_SESSION["name"] . "</p>";
+                        echo "<hr class='dropdown-divider'>";
+                        echo "<li><a class='dropdown-item' href='authentication/login/logout.php'>Logout</a></li>";
+                        echo "</ul>";
+                    } else {
+                        echo  "<a class='btn btn-primary' href='authentication/login/index.php'>Login</a>";
+                    }
+                    ?>
+                </div>
             </div>
-            <!-- Kuis Button -->
-            <div class="btn-group me-2">
-                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Kuis
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="kuis/html">Kuis HTML</a></li>
-                    <li><a class="dropdown-item" href="kuis/js">Kuis Javascript</a></li>
-                    <li><a class="dropdown-item" href="kuis/php">Kuis PHP</a></li>
-                </ul>
-            </div>
-            <?php if (isset($_SESSION["level"])) {
-                echo  "<a class='nav-link dropdown-toggle' id='navbarDropdown' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'><i class='fas fa-user fa-fw'></i></a>";
-                echo  "<ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>";
-                echo "<p class='dropdown-item'>" . $_SESSION["name"] . "</p>";
-                echo "<hr class='dropdown-divider'>";
-                echo "<li><a class='dropdown-item' href='authentication/login/logout.php'>Logout</a></li>";
-                echo "</ul>";
-            } else {
-                echo  "<a class='btn btn-primary' href='authentication/login/index.php'>Login</a>";
-            }
-            ?>
         </div>
     </nav>
     <!-- Masthead-->
