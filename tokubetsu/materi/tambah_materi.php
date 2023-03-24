@@ -11,13 +11,8 @@ if (!isset($_SESSION["level"]) == 1) {
 // Require DB
 require '../../authentication/db/conn_db.php';
 
-
 // Tambah Materi
 if (isset($_POST["tambah"])) {
-    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //     $reference = $_POST['reference'];
-    //     $url = $_POST["url"];
-    // }
     if (empty($_POST["mode"] || $_POST["judul"])) {
         $_SESSION["required"] = "<div class='alert alert-danger' role='alert'>
         <strong>Semua input</strong> harus diisi!
@@ -26,15 +21,15 @@ if (isset($_POST["tambah"])) {
         $_SESSION["success"] = "<div class='alert alert-success' role='alert'>
         <strong>Berhasil</strong> menambahkan materi!
         </div>";
-    } elseif (tambahMateri($_POST) == 0) {
-        $_SERVER["failed"] = "<div class='alert alert-danger' role='alert'>
+    } elseif (tambahMateri($_POST) < 1) {
+        $_SESSION["failed"] = "<div class='alert alert-danger' role='alert'>
         <strong>Gagal</strong> menambahkan materi!
         </div>";
     }
 }
 
 // Variabel Template
-$title = 'Materi';
+$title = 'Tambah Materi';
 $author = 'Kristovel Adi S.';
 
 // Pemanggilan File Template
@@ -76,7 +71,7 @@ require '../template/sidebar.php';
                                     <option value="Javascript">
                                 </datalist>
                             </div>
-                            <div class="mb-3 col-4">
+                            <div class=" col-4 mb-3">
                                 <label for="judul" class="form-label">Judul Materi</label>
                                 <input type="text" class="form-control" id="judul" name="judul" autocomplete="off">
                             </div>
@@ -88,10 +83,7 @@ require '../template/sidebar.php';
                         </div>
                         <div class="col mb-3">
                             <label for="materi" class="form-label">Isi Materi</label>
-                            <textarea class="ckeditor" id="editor1" rows="3" name="isi" style="height: 175px;">
-                            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-                            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script></textarea>
+                            <textarea class="ckeditor" id="editor1" rows="3" name="isi" style="height: 175px;"></textarea>
                         </div>
                         <div class="col mb-3">
                             <legend class="small"><i class="fas fa-eye"></i> Preview Materi</legend>
