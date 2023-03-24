@@ -50,11 +50,39 @@ function tambahMateri($data)
     $mode = htmlspecialchars(stripslashes($data["mode"]));
     $judul = stripslashes($mode . " " . htmlspecialchars(stripslashes($data["judul"])));
     $isi = htmlspecialchars(stripslashes($data["isi"]));
-    $reference = htmlspecialchars(stripslashes(implode(",", $data["reference"])));
-    $url = htmlspecialchars(stripslashes(implode(",", $data["url"])));
+
+    // Get $reference and $url
+    if (empty($data["reference"])) {
+        $reference = '';
+        $url = '';
+    } else {
+        $reference = htmlspecialchars(stripslashes(implode(",", $data["reference"])));
+        $url = htmlspecialchars(stripslashes(implode(",", $data["url"])));
+    }
+
+    // Get $href
+    if ($mode == 'HTML') {
+        $href = 'learn/html/';
+    } elseif ($mode == 'PHP') {
+        $href = 'learn/php/';
+    } elseif ($mode == 'Javascript') {
+        $href = 'learn/js/';
+    }
+
+    // Get $page
+    if ($mode == 'HTML') {
+        $recordPage = mysqli_query($conn, "SELECT max(page) as lastPage FROM materi WHERE mode='HTML'");
+    } elseif ($mode == 'PHP') {
+        $recordPage = mysqli_query($conn, "SELECT max(page) as lastPage FROM materi WHERE mode='PHP'");
+    } elseif ($mode == 'Javascript') {
+        $recordPage = mysqli_query($conn, "SELECT max(page) as lastPage FROM materi WHERE mode='Javascript'");
+    }
+    $data = mysqli_fetch_array($recordPage);
+    $page = $data['lastPage'];
+    $page++;
 
     // Query tambah materi
-    $query = "INSERT INTO materi VALUES('','$mode','$judul','$isi','$reference','$url')";
+    $query = "INSERT INTO materi VALUES('','$href','$page','$mode','$judul','$isi','$reference','$url')";
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
