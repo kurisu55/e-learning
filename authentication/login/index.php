@@ -35,14 +35,14 @@ if (isset($_POST["login"])) {
 
         // Lakukan pengecekan password, lalu IF selanjutnya melakukan pengecekan level user ke halaman tertentu
         if (password_verify($password, $row["password"])) {
-            if ($row["level"] == '1') {
-                $_SESSION["level"] = '1';
+            if ($row["level"] == 1) {
+                $_SESSION["level"] = 1;
                 $_SESSION["username"] = $username;
                 $_SESSION["name"] = $name;
                 header("location:../../tokubetsu/dashboard/dashboard.php");
                 exit;
-            } elseif ($row["level"] == '2') {
-                $_SESSION["level"] = '2';
+            } elseif ($row["level"] == 2) {
+                $_SESSION["level"] = 2;
                 $_SESSION["username"] = $username;
                 $_SESSION["name"] = $name;
                 header("location:../../index.php");
@@ -106,17 +106,15 @@ if (isset($_POST["login"])) {
                             <label for="username" class="visually-hidden">Username</label>
                             <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                         </div>
-
                         <!-- Password input -->
                         <div class="form-outline mb-3">
                             <label for="password" class="visually-hidden">Password</label>
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         </div>
-
-                        <div class="d-flex justify-content-between align-items-center">
+                        <!-- FOrgot Password -->
+                        <!-- <div class="d-flex justify-content-between align-items-center">
                             <a href="#!" class="text-body">Forgot password?</a>
-                        </div>
-
+                        </div> -->
                         <div class="text-center text-lg-start mt-2 pt-2">
                             <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="login">Login</button>
                             <p class="small fw-bold mt-2 pt-1 mb-0">Ingin daftar <a href="../register/index.php" class="link-danger">Register</a></p>
