@@ -4,7 +4,7 @@
 session_start();
 
 // IF untuk bila login tidak sebagai level 1  = 'Admin'
-if (!isset($_SESSION["level"]) == 1) {
+if ($_SESSION["level"] == 2) {
     header("location:../../error/401.php");
 }
 
@@ -67,20 +67,20 @@ require '../template/sidebar.php';
                                 <div class="row col-8">
                                     <ul class="nav ms-2">
                                         <li class="nav-item">
-                                            <button type="submit" name="html" class="btn btn-danger me-2"><i class="fa-brands fa-html5"></i> HTML</button>
+                                            <button type="submit" name="html" class="btn btn-sm btn-danger me-2"><i class="fa-brands fa-html5"></i> HTML</button>
                                         </li>
                                         <li class="nav-item">
-                                            <button type="submit" name="php" class="btn btn-info me-2"><i class="fa-brands fa-php"></i> PHP</button>
+                                            <button type="submit" name="php" class="btn btn-sm btn-info me-2"><i class="fa-brands fa-php"></i> PHP</button>
                                         </li>
                                         <li class="nav-item">
-                                            <button type="submit" name="js" class="btn btn-warning me-5"><i class="fa-brands fa-js"></i> Javascript</button>
+                                            <button type="submit" name="js" class="btn btn-sm btn-warning me-5"><i class="fa-brands fa-js"></i> Javascript</button>
                                         </li>
                                         <li class="nav-item">
-                                            <a type="submit" href="edit_kuis.php" class="btn btn-secondary"><i class="fas fa-filter"></i> Reset</a>
+                                            <a type="submit" href="edit_kuis.php" class="btn btn-sm btn-secondary"><i class="fas fa-filter"></i> Reset</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-4 mt-1">
                                     <span class="disabled">Kuis aktif :</span>
                                     <span class="disabled me-1">HTML : <?= $html; ?></span>
                                     <span class="disabled me-1">PHP : <?= $php; ?></span>
@@ -116,8 +116,8 @@ require '../template/sidebar.php';
                                                 } else {
                                                     echo "<span class='fw-bold text-danger p-1' title='OFF'>OFF</span>";
                                                 }; ?>
-                                                <a href="Edit.php?id=<?= $row["id"]; ?>" class="btn btn-warning ms-1 me-2">Edit</a>
-                                                <a href="Delete.php?id=<?= $row["id"]; ?>" class="btn btn-danger my-1" onclick="return confirm('Konfirmasi hapus?');">Delete</a>
+                                                <a href="Edit.php?id=<?= $row["id"]; ?>" class="btn btn-sm btn-warning ms-1 me-2">Edit</a>
+                                                <a href="Delete.php?id=<?= $row["id"]; ?>" class="btn btn-sm btn-danger my-1" onclick="return confirm('Konfirmasi hapus?');">Delete</a>
                                             </td>
                                         </tr>
                                 </tbody>

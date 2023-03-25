@@ -32,7 +32,10 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li>
-                            <p class="dropdown-item"><?php echo $_SESSION['name']; ?></p>
+                            <p class="dropdown-item"><?php if (isset($_SESSION['name'])) {
+                                                            echo $_SESSION["name"];
+                                                        } ?>
+                            </p>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
