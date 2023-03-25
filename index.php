@@ -3,7 +3,7 @@
 session_start();
 
 // IF untuk bila login tidak sebagai level 1  = 'Admin'
-if ($_SESSION["level"] == 1) {
+if (isset($_SESSION["level"]) && $_SESSION["level"] == 1) {
     header("location:tokubetsu/dashboard/dashboard.php");
 }
 
