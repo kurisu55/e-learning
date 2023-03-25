@@ -3,8 +3,19 @@
 session_start();
 
 // IF untuk bila login tidak sebagai level 1  = 'Admin'
-if ($_SESSION["level"] == 2) {
-    header("location:../../error/401.php");
+if (isset($_SESSION["level"]) && $_SESSION["level"] == 1) {
+    // halaman admin
+} else {
+    // jika pengguna tidak memiliki akses level 1
+    if (isset($_SESSION["level"]) && $_SESSION["level"] == 2) {
+        // arahkan pengguna dengan akses level 2 ke halaman index
+        header("location:../../error/401.php");
+        exit;
+    } else {
+        // jika pengguna belum login, arahkan ke halaman login
+        header("location:../../error/401.php");
+        exit;
+    }
 }
 
 // Require DB
