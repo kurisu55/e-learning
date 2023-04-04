@@ -17,7 +17,7 @@ $row = mysqli_fetch_assoc($result);
 
 // Variabel Template
 $title = $row["judul"];
-$description = 'PHP Learning, PHP Output, PHP';
+$description = 'PHP Learning, PHP Sintaks, PHP';
 $author = 'Kristovel Adi S.';
 
 // Pemanggilan File Template

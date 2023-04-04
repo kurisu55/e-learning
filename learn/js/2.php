@@ -1,7 +1,24 @@
 <!-- SCRIPT PHP AWAL -->
 <?php
-// Variabel Twmplate
-$title = 'PHP HOME';
+
+// Session
+session_start();
+
+// Connect DB
+require '../../authentication/db/conn_db.php';
+
+// Get id based filename
+$filename = basename($_SERVER['REQUEST_URI']);
+$id = basename($filename, ".php");
+
+// Query
+$result = mysqli_query($conn, "SELECT * FROM materi WHERE mode='Javascript' AND page=$id");
+$row = mysqli_fetch_assoc($result);
+
+// Variabel Template
+$title = $row["judul"];
+$description = 'Javascript Learning, Javascript Output, Console, Javascript';
+$author = 'Kristovel Adi S.';
 
 // Pemanggilan File Template
 require 'template/head.php';
@@ -11,16 +28,27 @@ require 'template/sidebar.php';
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4"><?= $title; ?></h1>
+            <h1 class="mt-4"><?= $title ?></h1>
             <div class="card mb-4">
                 <div class="card-body">
-                    This page is an example of using the light side navigation option. By appending the
-                    <code>.sb-sidenav-light</code>
-                    class to the
-                    <code>.sb-sidenav</code>
-                    class, the side navigation will take on a light color scheme. The
-                    <code>.sb-sidenav-dark</code>
-                    is also available for a darker option.
+                    <?= htmlspecialchars_decode($row["isi"]); ?>
+                    <!-- Reference -->
+                    <section class="mt-5">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-header">
+                                Referensi
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <?php
+                                $array1 = explode(",", $row['sumber']);
+                                $array2 = explode(",", $row['url']);
+                                foreach ($array1 as $key => $value) {
+                                    echo "<li class='list-group-item'><a href='" . $array2[$key] . "' target='_blank'>" . $value . "</a></li>";
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>

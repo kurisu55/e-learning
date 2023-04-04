@@ -17,7 +17,7 @@ $row = mysqli_fetch_assoc($result);
 
 // Variabel Template
 $title = $row["judul"];
-$description = 'Javascript Learning, Javascript Intro, Javascript';
+$description = 'Javascript Learning, Javascript String, Javascript';
 $author = 'Kristovel Adi S.';
 
 // Pemanggilan File Template

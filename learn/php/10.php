@@ -12,12 +12,12 @@ $filename = basename($_SERVER['REQUEST_URI']);
 $id = basename($filename, ".php");
 
 // Query
-$result = mysqli_query($conn, "SELECT * FROM materi WHERE mode='Javascript' AND page=$id");
+$result = mysqli_query($conn, "SELECT * FROM materi WHERE mode='PHP' AND page=$id");
 $row = mysqli_fetch_assoc($result);
 
 // Variabel Template
 $title = $row["judul"];
-$description = 'Javascript Learning, Javascript Intro, Javascript';
+$description = 'PHP Learning, PHP Array, PHP';
 $author = 'Kristovel Adi S.';
 
 // Pemanggilan File Template
