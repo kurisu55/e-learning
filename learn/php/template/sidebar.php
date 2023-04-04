@@ -13,7 +13,31 @@
                         PHP Intro
                     </a>
                     <a class="nav-link text-secondary active" href="2.php">
-                        PHP Dasar
+                        PHP Sintaks
+                    </a>
+                    <a class="nav-link text-secondary active" href="3.php">
+                        PHP Variabel
+                    </a>
+                    <a class="nav-link text-secondary active" href="4.php">
+                        PHP Echo/Print
+                    </a>
+                    <a class="nav-link text-secondary active" href="5.php">
+                        PHP Tipe Data
+                    </a>
+                    <a class="nav-link text-secondary active" href="6.php">
+                        PHP Operators
+                    </a>
+                    <a class="nav-link text-secondary active" href="7.php">
+                        PHP Percabangan
+                    </a>
+                    <a class="nav-link text-secondary active" href="8.php">
+                        PHP Loop
+                    </a>
+                    <a class="nav-link text-secondary active" href="9.php">
+                        PHP Function
+                    </a>
+                    <a class="nav-link text-secondary active" href="10.php">
+                        PHP Arrays
                     </a>
                 </div>
             </div>

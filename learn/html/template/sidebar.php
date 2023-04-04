@@ -13,7 +13,31 @@
                         HTML Intro
                     </a>
                     <a class="nav-link text-secondary active" href="2.php">
-                        HTML Dasar
+                        HTML Block & Inline
+                    </a>
+                    <a class="nav-link text-secondary active" href="3.php">
+                        HTML Atribut
+                    </a>
+                    <a class="nav-link text-secondary active" href="4.php">
+                        HTML ID
+                    </a>
+                    <a class="nav-link text-secondary active" href="5.php">
+                        HTML Class
+                    </a>
+                    <a class="nav-link text-secondary active" href="6.php">
+                        HTML Style & CSS
+                    </a>
+                    <a class="nav-link text-secondary active" href="7.php">
+                        HTML List
+                    </a>
+                    <a class="nav-link text-secondary active" href="8.php">
+                        HTML Table
+                    </a>
+                    <a class="nav-link text-secondary active" href="9.php">
+                        HTML Form
+                    </a>
+                    <a class="nav-link text-secondary active" href="10.php">
+                        HTML Javascript
                     </a>
                 </div>
             </div>
