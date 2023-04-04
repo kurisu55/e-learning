@@ -50,6 +50,10 @@ $author = 'Kristovel Adi S.';
     <script src="../../assets/codemirror/mode/htmlmixed/htmlmixed.js"></script>
 
     <style>
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
         iframe {
             width: 100%;
             height: 500px;
@@ -81,19 +85,22 @@ $author = 'Kristovel Adi S.';
                 </select>
             </li>
             <li class="nav-item">
-                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" title="Key Info" data-bs-trigger="hover focus" data-bs-content="Key F11 : Fullscreen">
-                    <button class="btn btn-primary" type="button" disabled>Key</button>
-                </span>
+                <div class="dropdown">
+                    <a class="btn btn-info dropdown-toggle disabled" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Keys
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <span class="dropdown-item">F11 : Fullscreen</span>
+                        </li>
+                    </ul>
+                </div>
             </li>
         </ul>
         <div class="mx-2 mb-1">
             <div class="row">
                 <div class="col">
-                    <textarea id="code"><?php
-                                        if (isset($_SESSION["tutorial"])) {
-                                            echo $_SESSION["tutorial"];
-                                        }; ?>
-                    </textarea>
+                    <textarea id="code"></textarea>
                 </div>
                 <div class="col">
                     <iframe id="preview" style="background-color: white;"></iframe>
@@ -110,7 +117,7 @@ $author = 'Kristovel Adi S.';
     <script>
         // Initialize CodeMirror editor with a nice html5 canvas demo.
         var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
-            mode: 'text/html',
+            mode: 'htmlmixed',
             lineNumbers: true,
             matchBrackets: true,
             autoCloseTags: true,
@@ -123,7 +130,7 @@ $author = 'Kristovel Adi S.';
                 }
             }
         });
-        editor.setSize("100%", 500);
+        editor.setSize(650, 500);
 
         // Button Run Code to preview iframe
         function buttonRun() {
