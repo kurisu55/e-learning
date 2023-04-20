@@ -22,6 +22,10 @@
         body {
             font-family: 'Roboto', sans-serif;
         }
+
+        hr {
+            margin-top: -10px;
+        }
     </style>
 </head>
 
