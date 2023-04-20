@@ -19,7 +19,7 @@ require 'template/sidebar.php';
             <h1 class="mt-4"><?= $title; ?></h1>
             <div class="card mb-4">
                 <div class="card-body">
-                    <p>PHP merupakan bahasa server-side.</p>
+                    <p>PHP : Hypertext Preprocessor merupakan bahasa server-side.</p>
                     <p>PHP merupakan bahasa yang bebas digunakan dan gratis.</p>
                     <section>
                         <div class="mx-2 mt-3 border-3 border-bottom" style="background-color: #eeeeee;">
