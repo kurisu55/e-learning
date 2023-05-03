@@ -15,8 +15,44 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="../../assets/startbootstrap-sb-admin-gh-pages/js/scripts.js"></script>
 <script src="../../assets/codemirror/lib/codemirror.js"></script>
+<!-- Own JS -->
+<script src="../../../assets/js/main.js"></script>
 <script>
     var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+        mode: 'application/x-httpd-php',
+        theme: 'base16-light',
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseTags: true,
+        readOnly: true,
+    });
+</script>
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById('pendek'), {
+        mode: 'application/x-httpd-php',
+        theme: 'base16-light',
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseTags: true,
+        readOnly: true,
+    });
+    var editor = CodeMirror.fromTextArea(document.getElementById('code2'), {
+        mode: 'application/x-httpd-php',
+        theme: 'base16-light',
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseTags: true,
+        readOnly: true,
+    });
+    var editor = CodeMirror.fromTextArea(document.getElementById('code3'), {
+        mode: 'application/x-httpd-php',
+        theme: 'base16-light',
+        lineNumbers: true,
+        matchBrackets: true,
+        autoCloseTags: true,
+        readOnly: true,
+    });
+    var editor = CodeMirror.fromTextArea(document.getElementById('code4'), {
         mode: 'application/x-httpd-php',
         theme: 'base16-light',
         lineNumbers: true,
