@@ -26,6 +26,15 @@
         hr {
             margin-top: -10px;
         }
+
+        legend {
+            margin-top: 10px;
+        }
+
+        div #preview {
+            padding: 5px;
+            border: 1px solid black;
+        }
     </style>
 </head>
 
