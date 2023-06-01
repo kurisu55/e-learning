@@ -32,6 +32,12 @@ require 'authentication/db/conn_db.php';
     <link href="assets/startbootstrap-landing-page-gh-pages/css/styles.css" rel="stylesheet" />
     <!-- FontAwesome -->
     <link rel="stylesheet" href="assets/fontawesome-free-6.1.1-web/css/all.min.css">
+    <style>
+        .scroll-materi {
+            height: 300px;
+            overflow: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -95,7 +101,9 @@ require 'authentication/db/conn_db.php';
                         <div class="row">
                             <div class="col">
                                 <input class="form-control form-control-lg" id="search" type="search" placeholder="Ketik pencarian disini!" />
-                                <div class="list-group" id="materi"></div>
+                                <div class="scroll-materi">
+                                    <span class="list-group" id="materi"></span>
+                                </div>
                             </div>
                             <!-- <div class="col-auto"><button class="btn btn-primary btn-lg" type="submit">Submit</button></div> -->
                         </div>
