@@ -11,6 +11,8 @@
     <link href="../../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
     <!-- Code Mirror -->
     <link rel="stylesheet" href="../../assets/codemirror/lib/codemirror.css">
+    <!-- Own Style -->
+    <link rel="stylesheet" href="../../assets/style.css">
     <!-- Code Mirror Theme -->
     <link rel="stylesheet" href="../../assets/codemirror/theme/base16-light.css">
     <!-- Font Roboto -->
@@ -28,12 +30,89 @@
         }
 
         legend {
-            margin-top: 10px;
+            margin-top: -10px;
         }
 
         div #preview {
-            padding: 5px;
+            padding: 10px;
             border: 1px solid black;
+        }
+
+        div.col-7 {
+            padding-top: 15px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Materi HTML ID */
+        #idJudul {
+            text-align: center;
+            color: red;
+        }
+
+        #idIsi {
+            background-color: gray;
+        }
+
+        /* Materi HTML Class*/
+        .classJudul {
+            color: red;
+            text-align: center;
+        }
+
+        .classIsi {
+            border: 1px solid;
+        }
+
+        .classSatu {
+            font-size: 30px;
+        }
+
+        /* HTML CSS */
+        h1.internalStyle {
+            font-family: Arial;
+        }
+
+        p.internalStyle {
+            font-family: 'Times New Roman';
+        }
+
+        .externalCSS h1 {
+            color: red;
+        }
+
+        .externalCSS p {
+            background-color: black;
+            color: blue;
+            font-family: Tahoma;
+        }
+
+        h1.externalCSS {
+            color: red;
+        }
+
+        p.externalCSS {
+            background-color: black;
+            color: white;
+            font-family: Tahoma;
+        }
+
+        .classBlue {
+            color: blue;
+            font-style: italic;
+        }
+
+        #idGreen {
+            color: green;
+        }
+
+        table,
+        thead,
+        tbody,
+        th,
+        td {
+            border-collapse: initial;
         }
     </style>
 </head>

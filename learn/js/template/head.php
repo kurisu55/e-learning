@@ -28,12 +28,19 @@
         }
 
         legend {
-            margin-top: 10px;
+            margin-top: -10px;
         }
 
         div #preview {
-            padding: 5px;
+            padding: 10px;
             border: 1px solid black;
+        }
+
+        div.col-7 {
+            padding-top: 15px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
         }
     </style>
 </head>
