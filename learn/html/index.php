@@ -22,30 +22,31 @@ require 'template/sidebar.php';
                     <p>HTML merupakan bahasa markup utama dalam pembuatan halaman web.</p>
                     <p>HTML adalah bahasa yang mudah dipelajari.</p>
                     <section>
-                        <div class="mx-2 mt-3 border-3 border-bottom" style="background-color: #eeeeee;">
-                            <ul class="nav mb-1 p-2 border">
-                                <li class="nav-item me-3">
-                                    <h4 class="btn-info">Contoh HTML</h4>
-                                </li>
-                            </ul>
-                            <div class="mx-2 mb-1">
-                                <div class="row">
-                                    <div class="col">
-                                        <textarea id="code">
-<!DOCYTPE html>
-<html>
-<head>
-    <title>Coba HTML</title>
-</head>
-<body>
-    <p>Ini adalah contoh bahasa HTML.</p>
-    <p>HTML merupakan bahasa utama dalam pembuatan halaman web.</p>
-</body>
-</html></textarea>
-                                    </div>
+                        <div class="row ms-1">
+                            <div class="col-7" style="border:1px solid red;">
+                                <pre>
+&lt!DOCTYPE html>
+&lthtml>
+&lthead>
+   &lttitle>Coba HTML&lt/title>
+&lt/head>
+   &ltbody>
+   &ltp>Ini adalah contoh bahasa HTML.&lt/p>
+    &ltp&gt;HTML merupakan bahasa utama dalam pembuatan halaman web.&lt/p>
+   &lt/body>
+&lt/html>
+</pre>
+                            </div>
+                            <div class="col-5">
+                                <legend>Hasil</legend>
+                                <div id="preview">
+                                    <p>Ini adalah contoh bahasa HTML.</p>
+                                    <p>HTML merupakan bahasa utama dalam pembuatan halaman web.</p>
+                                    </script>
                                 </div>
                             </div>
                         </div>
+                        <br>
                     </section>
                     <h2 class="mt-4">Coba Kuis?</h2>
                     <section style="background-color: #eeeeee;">

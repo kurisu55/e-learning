@@ -22,32 +22,23 @@ require 'template/sidebar.php';
                     <p>PHP : Hypertext Preprocessor merupakan bahasa server-side.</p>
                     <p>PHP merupakan bahasa yang bebas digunakan dan gratis.</p>
                     <section>
-                        <div class="mx-2 mt-3 border-3 border-bottom" style="background-color: #eeeeee;">
-                            <ul class="nav mb-1 p-2 border">
-                                <li class="nav-item me-3">
-                                    <h4 class="btn-info">Contoh PHP</h4>
-                                </li>
-                            </ul>
-                            <div class="mx-2 mb-1">
-                                <div class="row">
-                                    <div class="col">
-                                        <textarea id="code">
-<!DOCYTPE html>
-<html>
-<head>
-    <title>Coba PHP</title>
-</head>
-<body>
-    <h1>Tutorial PHP</h1>
-    &lt;?php
-    echo 'Hello World!';
-    ?&gt;
-</body>
-</html></textarea>
-                                    </div>
+                        <div class="row ms-1">
+                            <div class="col-7" style="border:1px solid red;">
+                                <pre>
+&lt;?php
+echo 'Hello World!';
+?&gt;
+                                </pre>
+                            </div>
+                            <div class="col-5">
+                                <legend>Hasil</legend>
+                                <div id="preview">
+                                    <h1>Tutorial PHP</h1>
+                                    Hello World!
                                 </div>
                             </div>
                         </div>
+                        <br>
                     </section>
                     <h2 class="mt-4">Coba Kuis?</h2>
                     <section style="background-color: #eeeeee;">
