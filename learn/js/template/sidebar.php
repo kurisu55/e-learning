@@ -37,7 +37,7 @@
                         Javascript Events
                     </a>
                     <a class="nav-link text-secondary active" href="10.php">
-                        Javascript Fucntion
+                        Javascript Function
                     </a>
                 </div>
             </div>
