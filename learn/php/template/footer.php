@@ -17,50 +17,6 @@
 <script src="../../assets/codemirror/lib/codemirror.js"></script>
 <!-- Own JS -->
 <script src="../../../assets/js/main.js"></script>
-<script>
-    var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
-        mode: 'application/x-httpd-php',
-        theme: 'base16-light',
-        lineNumbers: true,
-        matchBrackets: true,
-        autoCloseTags: true,
-        readOnly: true,
-    });
-</script>
-<script>
-    var editor = CodeMirror.fromTextArea(document.getElementById('pendek'), {
-        mode: 'application/x-httpd-php',
-        theme: 'base16-light',
-        lineNumbers: true,
-        matchBrackets: true,
-        autoCloseTags: true,
-        readOnly: true,
-    });
-    var editor = CodeMirror.fromTextArea(document.getElementById('code2'), {
-        mode: 'application/x-httpd-php',
-        theme: 'base16-light',
-        lineNumbers: true,
-        matchBrackets: true,
-        autoCloseTags: true,
-        readOnly: true,
-    });
-    var editor = CodeMirror.fromTextArea(document.getElementById('code3'), {
-        mode: 'application/x-httpd-php',
-        theme: 'base16-light',
-        lineNumbers: true,
-        matchBrackets: true,
-        autoCloseTags: true,
-        readOnly: true,
-    });
-    var editor = CodeMirror.fromTextArea(document.getElementById('code4'), {
-        mode: 'application/x-httpd-php',
-        theme: 'base16-light',
-        lineNumbers: true,
-        matchBrackets: true,
-        autoCloseTags: true,
-        readOnly: true,
-    });
-</script>
 </body>
 
 </html>

@@ -17,48 +17,6 @@
 <script src="../../assets/codemirror/lib/codemirror.js"></script>
 <!-- Own JS -->
 <script src="../../assets/js/main.js"></script>
-<script>
-    var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
-        mode: 'htmlmixed',
-        theme: 'base16-light',
-        lineNumbers: true,
-        matchBrackets: true,
-        autoCloseTags: true,
-        readOnly: true,
-    });
-    var editor = CodeMirror.fromTextArea(document.getElementById('code2'), {
-        mode: 'htmlmixed',
-        theme: 'base16-light',
-        lineNumbers: true,
-        matchBrackets: true,
-        autoCloseTags: true,
-        readOnly: true,
-    });
-    var editor = CodeMirror.fromTextArea(document.getElementById('code3'), {
-        mode: 'htmlmixed',
-        theme: 'base16-light',
-        lineNumbers: true,
-        matchBrackets: true,
-        autoCloseTags: true,
-        readOnly: true,
-    });
-    var editor = CodeMirror.fromTextArea(document.getElementById('code4'), {
-        mode: 'htmlmixed',
-        theme: 'base16-light',
-        lineNumbers: true,
-        matchBrackets: true,
-        autoCloseTags: true,
-        readOnly: true,
-    });
-    var editor = CodeMirror.fromTextArea(document.getElementById('code5'), {
-        mode: 'htmlmixed',
-        theme: 'base16-light',
-        lineNumbers: true,
-        matchBrackets: true,
-        autoCloseTags: true,
-        readOnly: true,
-    });
-</script>
 </body>
 
 </html>
