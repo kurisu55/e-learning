@@ -26,28 +26,28 @@ $author = 'Kristovel Adi S.';
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
     <!-- CodeMirror CSS -->
-    <link rel="stylesheet" href="../../assets/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.css" integrity="sha512-7vaQ4LLdaXd2IuMd4MUQ6LRFIGbEwJI1aq6KYqL3RjbdQyUkRFhwZKmqmkBXurTFdGlx687lTN8FSJfX6Df8Gw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Addons CodeMirror -->
-    <link rel="stylesheet" href="../../assets/codemirror/addon/display/fullscreen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/display/fullscreen.css" integrity="sha512-cCwzc1kXKEd8Z9s559PoYPH1HMjHeQvCAiE0KaWQZ7A3XbC0ZjtTP91bZFeGZLDvA7um51WCnRcK2XLHWyODTQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Theme CodeMirror-->
-    <link rel="stylesheet" href="../../assets/codemirror/theme/dracula.css">
-    <link rel="stylesheet" href="../../assets/codemirror/theme/base16-light.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.css" integrity="sha512-xGcoVXst3s+HA9HMoToxdHRy1NaFxaj1N8KSWVUTiTG2fkbteoxYEX3yUTC6GFW5K4Gd+78s03tMCzuCJElu/g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/base16-light.css" integrity="sha512-AWgtHoHbHLBjsAHGglTBR9Vn+S2kvgDByCT85YnCRP7vYcEjvLleMOQ34XaNkLl/qZ/WjQVfK3pPSQGajZwqMw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- CodeMirror JS -->
-    <script src="../../assets/codemirror/lib/codemirror.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.js" integrity="sha512-/+fl4bq21QQ5/i6azL1kssc/NWcL0uk/h4feOxnKk7C28h/SGhTp4dqj0W580J7fkc5TfPhm+yQSlTZGcTRmcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Addons CodeMirror JS -->
-    <script src="../../assets/codemirror/addon/edit/closetag.js"></script>
-    <script src="../../assets/codemirror/addon/edit/matchbrackets.js"></script>
-    <script src="../../assets/codemirror/addon/display/fullscreen.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/edit/closetag.js" integrity="sha512-1aYjqb0gMQmBzv97uzDI+zeMkiJ8cBIszGw4/k48sHZ/lzdq1Ibu/XxRGCMtv5TDwbtSddTs1IP/2zKKUaiRZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/edit/matchbrackets.js" integrity="sha512-xUUWekUNHRMUrO8BL11fcEbz6rcJW55X6LkW9MNcAGgCRbxGmMXmXG5Ds5O6v2BLb90AVT1I+ualk0G9IYx3bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/display/fullscreen.js" integrity="sha512-3LSEeg+b0pIeBxYCn3cWoBoitqDAlMImCNQp2D1Ea7LaZ8DT94m9hIJ7fjuSzBFFUswsZ+hp+X0+6KCpHKv/Ag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Mode Editor -->
-    <script src="../../assets/codemirror/mode/xml/xml.js"></script>
-    <script src="../../assets/codemirror/mode/javascript/javascript.js"></script>
-    <script src="../../assets/codemirror/mode/css/css.js"></script>
-    <script src="../../assets/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.js" integrity="sha512-zWiFnvx+BKIYp7HwMXQRKR3SC8AiS6wQchjjjtAV9bt34F54fwJMB//7hVm0C+kQywyStbJ00u9i07Qw9ARuqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.js" integrity="sha512-VgqsGo4zxSK9KBf4c3RWpFWkRfBEeIUb2p5VqKtDj7sXdTyTyx38jVVJSriVU12pS5hG5J69FDi/LDsQ5Y1Ldw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.js" integrity="sha512-kbf0gMc1+KPTTDWkjkGwf3h2Nx4djnWBVtcCKJcwLQpQ/TIMAjRBKM9f0ZDgj9kT5WTs1Qzsq+5Si2p7j9whkg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.js" integrity="sha512-ooMFWcVphTl+L7BsQk/PRDyUyFYH7f2QHjJ0kFvkTxJgMJS8XXPDJBZIrBtM0P7TCDOPjfQcnbx3s8hp27vraw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <style>
         .dropdown:hover .dropdown-menu {
