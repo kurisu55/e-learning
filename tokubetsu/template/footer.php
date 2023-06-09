@@ -21,7 +21,7 @@
 <!-- Bootstrap CDN -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <!-- Ckeditor JS Lib -->
-<script type="text/javascript" src="../../assets/ckeditor/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
 
 <script>
     // Preview CKEditor Materi
