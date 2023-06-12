@@ -9,12 +9,8 @@
     <meta name="author" content="<?= $author; ?>" />
     <title><?= $title; ?></title>
     <link href="../../assets/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
-    <!-- Code Mirror -->
-    <link rel="stylesheet" href="../../assets/codemirror/lib/codemirror.css">
     <!-- Own Style -->
     <link rel="stylesheet" href="../../assets/style.css">
-    <!-- Code Mirror Theme -->
-    <link rel="stylesheet" href="../../assets/codemirror/theme/base16-light.css">
     <!-- Font Roboto -->
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <!-- Favicon-->
