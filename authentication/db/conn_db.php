@@ -21,7 +21,7 @@ function registrasi($data)
 {
     global $conn;
 
-    $nama = htmlspecialchars(stripslashes($data["nama"]));
+    $nama = htmlspecialchars(stripslashes($data["name"]));
     $username = htmlspecialchars(stripslashes($data["username"]));
     $level = '2';
     $email =  htmlspecialchars(stripslashes($data["email"]));
